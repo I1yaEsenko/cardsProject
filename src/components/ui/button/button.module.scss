@@ -10,7 +10,7 @@
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-s);
   line-height: var(--line-height-m);
-
+  transition: background-color 0.5s linear;
   &:focus-visible {
     outline: 2px solid var(--color-info-500);
   }
@@ -20,7 +20,7 @@
   background-color: var(--color-accent-500);
   padding: 6px 28px;
   box-shadow: 0px 4px 18px 0px var(--color-accent-500);
-  //transition: background-color 0.5s linear;   /* вопрос  со звездочкой - необходимо ли нам такая анимация */
+
   &:hover {
     background-color: var(--color-accent-300);
   }
