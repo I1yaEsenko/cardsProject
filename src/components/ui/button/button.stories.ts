@@ -13,7 +13,7 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    children: 'Primary Button',
+    children: 'Button primary',
     disabled: false,
     variant: 'primary',
   },
@@ -24,6 +24,7 @@ export const Secondary: Story = {
     children: 'Secondary Button',
     disabled: false,
     variant: 'secondary',
+
   },
 }
 
