@@ -1,12 +1,15 @@
 .button {
   all: unset;
-
   cursor: pointer;
-
+  outline: none;
   box-sizing: border-box;
 
   font-family: inherit;
   color: inherit;
+  border-radius: 4px;
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-m);
 
   &:focus-visible {
     outline: 2px solid var(--color-info-500);
@@ -15,12 +18,63 @@
 
 .primary {
   background-color: var(--color-accent-500);
+  padding: 6px 28px;
+  box-shadow: 0px 4px 18px 0px var(--color-accent-500);
+  //transition: background-color 0.5s linear;   /* вопрос  со звездочкой - необходимо ли нам такая анимация */
+  &:hover {
+    background-color: var(--color-accent-300);
+  }
+
+  &:active {
+    background-color: var(--color-accent-700)
+  }
+
+  &:disabled {
+    background-color: var(--color-accent-900);
+    box-shadow: none;
+  }
+
+  &:focus {
+    background-color: var(--color-accent-500);
+
+    outline: 2px solid var(--color-info-700);
+
+  }
+
+
 }
 
 .secondary {
   background-color: var(--color-dark-300);
+  padding: 6px 28px;
+  box-shadow: 0px 4px 4px 0px var(--color-dark-shadow);
+
+  &:hover {
+    background-color: var(--color-dark-100);
+
+  }
+
+  &:active {
+    background-color: var(--color-dark-500)
+  }
+
+  &:disabled {
+    //background-color: var(--color-dark-300);
+    box-shadow: none;
+    color: var(--color-light-900);
+  }
+
+  &:focus {
+    background-color: var(--color-dark-300);
+    //border: 2px solid var(--color-info-700);
+    outline: 2px solid var(--color-info-700);
+
+    //padding: 6px 28px;
+  }
+
 }
 
 .fullWidth {
   width: 100%;
+  text-align: center;
 }
