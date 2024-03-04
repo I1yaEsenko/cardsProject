@@ -1,0 +1,117 @@
+.container {
+  width: 100%;
+  min-width: 300px;
+}
+
+.fieldContainer {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  cursor: auto;
+  resize: none;
+
+  width: 100%;
+  padding: 6px 12px;
+
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--color-dark-100);
+
+  background-color: transparent;
+  border: 1px solid var(--color-dark-300);
+  border-radius: 2px;
+  outline: 1px solid transparent;
+
+  transition: 0.3s;
+
+  &::placeholder {
+    color: var(--color-dark-100);
+  }
+
+  &:focus-visible {
+    border-color: var(--color-info-700);
+    outline: 1px solid var(--color-info-700);
+  }
+
+  &:hover {
+    background: var(--color-dark-700);
+  }
+
+  &.error {
+    color: var(--color-danger-300);
+    border-color: var(--color-danger-300);
+  }
+
+  &[type='search'] {
+    &::-webkit-search-decoration,
+    &::-webkit-search-cancel-button,
+    &::-webkit-search-results-button,
+    &::-webkit-search-results-decoration {
+      appearance: none;
+    }
+  }
+
+  &.search {
+    padding-left: 40px;
+  }
+}
+
+.inputLabel {
+  display: block;
+  color: var(--color-dark-100);
+}
+
+.inputSearch {
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  left: 12px;
+  transform: translateY(-50%);
+
+  width: 20px;
+  height: 20px;
+  padding: 0;
+
+  background: transparent;
+}
+
+.inputClose {
+  all: unset;
+
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+
+  width: 20px;
+  height: 20px;
+  padding: 0;
+
+  color: inherit;
+
+  background: transparent;
+}
+
+.showPassword {
+  all: unset;
+
+  cursor: pointer;
+
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  bottom: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+}
+
+.error {
+  color: var(--color-danger-300);
+}
