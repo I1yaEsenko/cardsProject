@@ -24,7 +24,6 @@ export const Secondary: Story = {
     children: 'Secondary Button',
     disabled: false,
     variant: 'secondary',
-
   },
 }
 
