@@ -47,7 +47,7 @@ export const Body1: Story = {
 
 export const Body2: Story = {
   args: {
-    variant: TypographyVariant.body1,
+    variant: TypographyVariant.body2,
     children: 'Body2. Lorem ipsum dolor sit amet, consectetur adipisicing elit.'
   }
 }
