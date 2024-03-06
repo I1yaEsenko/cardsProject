@@ -28,6 +28,9 @@
   align-items: center;
   justify-content: flex-start;
   padding: 12px 0;
+  &:focus-visible {
+    outline: none  ;
+  }
   &:first-child{
     padding-top: 0;
   } ;
