@@ -2,10 +2,9 @@
   position: relative;
   right: 0;
   padding: 12px;
-  background-color: #171717;
+  background-color: var(--color-dark-700);
   border-radius: 6px;
-  border: 1px solid #333333;
- animation-duration: 400ms;
+  border: 1px solid var(--color-dark-500);
 
 
 }
@@ -26,8 +25,8 @@
   }
 
   &:nth-of-type(even){
-    border-top: 1px solid #333333;
-    border-bottom: 1px solid #333333;
+    border-top: 1px solid var(--color-dark-500);
+    border-bottom: 1px solid var(--color-dark-500);
   }
   &:first-of-type{
     padding-top: 0;
