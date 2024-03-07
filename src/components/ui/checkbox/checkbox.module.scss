@@ -1,35 +1,82 @@
-@import '@radix-ui/colors/black-alpha.css';
-@import '@radix-ui/colors/violet.css';
+.label {
+  cursor: pointer;
+  user-select: none;
 
-/* reset */
-button {
-  all: unset;
+  z-index: 0;
+
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  color: var(--color-light-100);
+
+  &.disabled {
+    cursor: initial;
+    color: var(--color-light-900);
+  }
 }
 
-.CheckboxRoot {
-  background-color: white;
-  width: 25px;
-  height: 25px;
-  border-radius: 4px;
+.checkboxRoot {
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 10px var(--black-a7);
-}
-.CheckboxRoot:hover {
-  background-color: var(--violet-3);
-}
-.CheckboxRoot:focus {
-  box-shadow: 0 0 0 2px black;
+
+  width: 1.125rem;
+  height: 1.125rem;
+
+  background-color: transparent;
+  border: 2px solid var(--color-light-900);
+  border-radius: 2px;
+
+  transition: all 0.3s linear;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 2.25rem;
+    height: 2.25rem;
+
+    background-color: transparent;
+    border-radius: 50%;
+
+    transition: all 0.3s linear;
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:active::before,
+  &:focus::before {
+    background-color: var(--color-dark-100);
+  }
+
+  &:hover:not([data-disabled])::before {
+    background-color: var(--color-dark-500);
+  }
+
+  &[data-state='checked'][data-disabled] {
+    background-color: var(--color-light-100);
+  }
+
+  &[data-state='checked'] {
+    background-color: var(--color-dark-900);
+  }
+
+  &:not([data-disabled]) {
+    cursor: pointer;
+  }
 }
 
-.CheckboxIndicator {
-  color: var(--violet-11);
-}
-
-.Label {
-  color: white;
-  padding-left: 15px;
-  font-size: 15px;
-  line-height: 1;
+.checkboxIndicator {
+  width: 1.125rem;
+  height: 1.125rem;
 }
