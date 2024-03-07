@@ -6,6 +6,7 @@ const meta = {
   component: Button,
   tags: ['autodocs'],
   title: 'Components/Button',
+
 } satisfies Meta<typeof Button>
 
 export default meta
@@ -17,6 +18,7 @@ export const Primary: Story = {
     disabled: false,
     variant: 'primary',
   },
+
 }
 
 export const Secondary: Story = {
