@@ -1,0 +1,50 @@
+.dropdownMenuContent, {
+  position: relative;
+  right: 0;
+  padding: 12px;
+  background-color: #171717;
+  border-radius: 6px;
+  border: 1px solid #333333;
+ animation-duration: 400ms;
+
+
+}
+.IconButton{
+  line-height: 0 !important;
+  position: relative;
+
+  background-color: transparent;
+  border: none ;
+}
+.dropdownMenuItem{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px 0;
+  &:focus-visible {
+    outline: none  ;
+  }
+
+  &:nth-of-type(even){
+    border-top: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+  }
+  &:first-of-type{
+    padding-top: 0;
+  }
+
+  &:last-of-type {
+    padding-bottom: 0;
+  }
+
+}
+.dropdownMenuItemSpan{
+  line-height: 0 !important;
+  padding-right:6px ;
+}
+
+.dropdownArrow{
+  transform: rotate(180deg);
+  top: 1px;
+}
+
