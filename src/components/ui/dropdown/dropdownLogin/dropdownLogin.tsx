@@ -1,5 +1,3 @@
-import React from 'react'
-
 import Basket from '@/assets/icons/basket'
 import Pin from '@/assets/icons/pin'
 import Player from '@/assets/icons/player'

@@ -1,5 +1,3 @@
-import React from 'react'
-
 import UserIcon from '@/assets/icons/UserIcon'
 import SignOutIcon from '@/assets/icons/signOutIcon'
 import { Typography } from '@/components/ui/typography'
