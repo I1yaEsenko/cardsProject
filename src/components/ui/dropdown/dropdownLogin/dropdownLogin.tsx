@@ -1,36 +1,51 @@
-import React from "react";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import s from "@/components/ui/dropdown/dropdown.module.scss";
-import Player from "@/assets/icons/player";
-import {Typography} from "@/components/ui/typography";
-import {TypographyVariant} from "@/components/ui/typography/enum";
-import Pin from "@/assets/icons/pin";
-import Basket from "@/assets/icons/basket";
+import React from 'react'
 
+import Basket from '@/assets/icons/basket'
+import Pin from '@/assets/icons/pin'
+import Player from '@/assets/icons/player'
+import { Typography } from '@/components/ui/typography'
+import { TypographyVariant } from '@/components/ui/typography/enum'
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+
+import s from '@/components/ui/dropdown/dropdown.module.scss'
 
 const DropdownLogin = () => {
-    return (
-        <React.Fragment>
-            <DropdownMenu.Item className={s.dropdownMenuItem}>
-                <span className={s.dropdownMenuItemSpan}><Player/> </span><Typography
-                style={{marginTop: '0', marginBottom: '0'}} variant={TypographyVariant.caption}
-                children={'Learn'}/>
-            </DropdownMenu.Item>
+  return (
+    <>
+      <DropdownMenu.Item className={s.dropdownMenuItem}>
+        <span className={s.dropdownMenuItemSpan}>
+          <Player />{' '}
+        </span>
+        <Typography
+          children={'Learn'}
+          style={{ marginBottom: '0', marginTop: '0' }}
+          variant={TypographyVariant.caption}
+        />
+      </DropdownMenu.Item>
 
-            <DropdownMenu.Item className={s.dropdownMenuItem}>
-                <span className={s.dropdownMenuItemSpan}><Pin/> </span><Typography
-                style={{marginTop: '0', marginBottom: '0'}} variant={TypographyVariant.caption}
-                children={'Edit'}/>
-            </DropdownMenu.Item>
+      <DropdownMenu.Item className={s.dropdownMenuItem}>
+        <span className={s.dropdownMenuItemSpan}>
+          <Pin />{' '}
+        </span>
+        <Typography
+          children={'Edit'}
+          style={{ marginBottom: '0', marginTop: '0' }}
+          variant={TypographyVariant.caption}
+        />
+      </DropdownMenu.Item>
 
-            <DropdownMenu.Item className={s.dropdownMenuItem}>
+      <DropdownMenu.Item className={s.dropdownMenuItem}>
+        <span className={s.dropdownMenuItemSpan}>
+          <Basket />{' '}
+        </span>
+        <Typography
+          children={'Delete'}
+          style={{ marginBottom: '0', marginTop: '0' }}
+          variant={TypographyVariant.caption}
+        />
+      </DropdownMenu.Item>
+    </>
+  )
+}
 
-                <span className={s.dropdownMenuItemSpan}><Basket/> </span><Typography
-                style={{marginTop: '0', marginBottom: '0'}} variant={TypographyVariant.caption}
-                children={'Delete'}/>
-            </DropdownMenu.Item>
-        </React.Fragment>
-    );
-};
-
-export default DropdownLogin;
+export default DropdownLogin

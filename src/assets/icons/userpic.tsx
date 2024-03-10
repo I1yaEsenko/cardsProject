@@ -1,11 +1,6 @@
-
 import icon from './user.png'
 const Userpic = () => {
-    return (
-        <img  src={icon} />
+  return <img src={icon} />
+}
 
-
-    );
-};
-
-export default Userpic;
+export default Userpic
