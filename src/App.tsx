@@ -1,3 +1,10 @@
+import { Slider } from '@/components/ui/slider'
+
 export function App() {
-  return <div>App</div>
+  return (
+    <div>
+      App
+      <Slider />
+    </div>
+  )
 }
