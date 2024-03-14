@@ -4,7 +4,7 @@ import ForgotForm from "@/components/forms/forgotForm/forgotForm";
 const meta = {
     component: ForgotForm,
     tags: ['autodocs'],
-    title: 'Components/ForgotForm',
+    title: 'Forgot/ForgotForm',
 } satisfies Meta<typeof ForgotForm>
 export default meta
 type Story = StoryObj<typeof meta>

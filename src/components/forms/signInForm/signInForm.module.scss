@@ -1,0 +1,32 @@
+.wrapper {
+  //потом вырезать
+  margin-left: auto;
+  margin-right: auto;
+  width: 420px;
+  .typographyTitleWrapper {
+    padding: 0 24px;
+    margin-bottom: 27px;
+
+    .typographyTitle {
+    text-align: center;
+    }
+  }
+  .typographyWrapper{
+padding-bottom: 60px;
+
+  .typographyWrapperEmail{
+    margin-bottom: 34px;
+  }
+  .tapographyCheckBox{
+    margin-top: 12px;
+  }
+  .forgotText{
+    text-align: right;
+    margin: 0;
+    padding-top:6px ;
+  }
+    .subTitle{
+      text-align: center;
+    }
+  }
+}
