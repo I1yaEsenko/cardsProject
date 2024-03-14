@@ -19,7 +19,7 @@
 .primary {
   background-color: var(--color-accent-500);
   padding: 6px 28px;
-  box-shadow: 0px 4px 18px 0px var(--color-accent-500);
+  box-shadow: rgba(140, 97, 255, 0.35);
 
   &:hover {
     background-color: var(--color-accent-300);

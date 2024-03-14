@@ -1,0 +1,44 @@
+.wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 420px;
+
+  .card {
+    padding: 0;
+  }
+  .link{
+    margin: 0;
+  }
+
+  .typographyTitleWrapper {
+    padding: 0 24px;
+    margin-bottom: 51px;
+
+    .typographyTitle {
+      margin: 0;
+    }
+  }
+
+  .typographyEmailWrapper {
+    padding-bottom: 65px;
+
+    .emailTypography {
+      margin: 0;
+      padding-top: 19px;
+      color: #C3C1C7;
+      //color: var(--color-light-900);
+    }
+  }
+
+  .typographyBottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .typographyBottomBody2 {
+      margin: 0;
+      padding: 20px 0 7px 0;
+    }
+  }
+
+}
