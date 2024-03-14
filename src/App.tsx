@@ -4,7 +4,7 @@ export function App() {
   return (
     <div>
       <h1>This is Cards</h1>
-      <Slider value={[20, 90]} />
+      <Slider value={[10, 60]} />
     </div>
   )
 }
