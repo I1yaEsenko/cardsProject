@@ -55,12 +55,11 @@
   position: relative;
 
   &:hover {
-    border-color: var(--color-accent-100)
+    border-color: var(--color-accent-100);
+    cursor: pointer;
   }
-}
-.SliderThumb:hover {
-  cursor: pointer;
-}
-.SliderThumb:focus {
-  outline: none;
+
+  &:focus {
+    outline: none;
+  }
 }

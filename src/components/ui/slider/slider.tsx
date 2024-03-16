@@ -25,7 +25,7 @@ export const Slider = forwardRef<ElementRef<typeof SliderRadix.Slider>, Props>(
         <SliderRadix.Root
           className={cn(s.SliderRoot, className)}
           onValueChange={onValueChange}
-          value={[value?.[0] ?? 10, value?.[1] ?? max ?? 20]}
+          value={[value?.[0] ?? 0, value?.[1] ?? max ?? 0]}
           {...rest}
           max={max}
           ref={ref}
