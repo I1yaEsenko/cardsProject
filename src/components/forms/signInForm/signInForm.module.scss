@@ -1,55 +1,50 @@
-.wrapper {
-  //потом вырезать
-  margin-left: auto;
-  margin-right: auto;
-  width: 420px;
 
-  .typographyTitleWrapper {
-    padding: 0 24px;
-    margin-bottom: 27px;
+.typographyTitleWrapper {
+  padding: 0 24px;
+  margin-bottom: 27px;
 
-    .typographyTitle {
-      text-align: center;
-      margin: 0px;
-    }
-  }
-
-  .typographyWrapper {
-    padding-bottom: 60px;
-
-    .typographyWrapperEmail {
-      margin-bottom: 34px;
-    }
-
-    .tapographyCheckBox {
-      margin-top: 12px;
-    }
-
-    .forgotText {
-      text-align: right;
-      margin: 0;
-      padding-top: 6px;
-    }
-
-  }
-
-  .subTitle {
-    display: flex;
+  .typographyTitle {
     text-align: center;
-    flex-direction: column;
-    margin-top: 20px;
+    margin: 0
+  }
+}
 
-    .subTitleBody2 {
-      margin: 0px;
-      padding-bottom: 7px;
-      color: var(--color-light-900);
+.typographyWrapper {
+  padding-bottom: 60px;
 
+
+
+  .tapographyCheckBox {
+    margin-top: 12px;
+  }
+
+  .forgotText {
+    text-align: right;
+
+    padding-top: 6px;
+    .forgotTextBody2{
+      margin: 0;
     }
+  }
 
-    .subTitleLink {
-      margin: 0px;
-      font-size: 16px;
-      font-weight: 700;
-    }
+}
+
+.subTitle {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  margin-top: 20px;
+
+  .subTitleBody2 {
+    margin: 0;
+    padding-bottom: 7px;
+    color: var(--color-light-900);
+
+  }
+
+  .subTitleLink {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
   }
 }
