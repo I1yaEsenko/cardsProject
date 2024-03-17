@@ -21,15 +21,19 @@ const SignInForm = () => {
                         <Checkbox label={'Remember me'}/>
                     </div>
                     <div className={s.forgotText}>
-                        <Typography style={{margin: 0}} variant={TypographyVariant.body2} children={'Forgot Password?'}/>
+                        <Typography style={{margin: 0}} variant={TypographyVariant.body2}> Forgot Password?</Typography>
                     </div>
                 </div>
                 <div className={s.button}>
                     <Button fullWidth  children={<Typography style={{margin: '6px'}} variant={TypographyVariant.subtitle2} children={'Sign In '}/>}/>
                 </div>
                 <div className={s.subTitle}>
-                    <Typography  variant={TypographyVariant.body2} children={'Don\'t have an account?'}/>
-                    <Typography variant={TypographyVariant.link1} children={'Don\'t have an account?'}/>
+                    <Typography  variant={TypographyVariant.body2}>
+                        Don't have an account?
+                    </Typography>
+                    <Typography variant={TypographyVariant.link1}>
+                        Don't have an account?
+                    </Typography>
 
                 </div>
             </Card>
