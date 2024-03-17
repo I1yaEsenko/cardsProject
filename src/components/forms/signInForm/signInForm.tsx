@@ -25,14 +25,16 @@ const SignInForm = () => {
                     </div>
                 </div>
                 <div className={s.button}>
-                    <Button fullWidth  children={<Typography style={{margin: '6px'}} variant={TypographyVariant.subtitle2} children={'Sign In '}/>}/>
+                    <Button fullWidth
+                            children={<Typography style={{margin: '6px'}} variant={TypographyVariant.subtitle2}
+                                                  children={'Sign In '}/>}/>
                 </div>
                 <div className={s.subTitle}>
-                    <Typography  variant={TypographyVariant.body2}>
+                    <Typography className={s.subTitleBody2} variant={TypographyVariant.body2}>
                         Don't have an account?
                     </Typography>
-                    <Typography variant={TypographyVariant.link1}>
-                        Don't have an account?
+                    <Typography className={s.subTitleLink} variant={TypographyVariant.link1} >
+                        Sign Up
                     </Typography>
 
                 </div>
