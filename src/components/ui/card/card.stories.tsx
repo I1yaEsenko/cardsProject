@@ -23,13 +23,13 @@ export const DefaultCard: Story = {
 export const CardLikeASection: Story = {
   args: {
     as: 'section',
-    children: <Typography variant={TypographyVariant.h2}>It's a section!</Typography>,
+    children: <Typography variant={TypographyVariant.h2}>Its a section!</Typography>,
   },
 }
 
 export const CardLikeAnArticle: Story = {
   args: {
     as: 'article',
-    children: <Typography variant={TypographyVariant.h2}>It's an article!</Typography>,
+    children: <Typography variant={TypographyVariant.h2}>Its an article!</Typography>,
   },
 }
