@@ -1,0 +1,14 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  &[data-disabled] {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.error {
+  color: var(--color-danger-300);
+}
