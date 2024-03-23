@@ -13,13 +13,15 @@ const ControlledCheckbox = <T extends FieldValues>(
         name,
         shouldUnregister,
         disabled,
+        defaultValue,
         ...rest
     }: Props<T>) => {
     const {field: {value, onChange, ref, onBlur},} = useController({
-        name: name,
+        name,
         control,
         shouldUnregister,
         disabled,
+        defaultValue
 
 
     })
