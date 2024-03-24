@@ -16,6 +16,9 @@
   .typographyWrapper {
     padding-bottom: 60px;
 
+    .email {
+      padding-bottom: 24px;
+    }
 
     .tapographyCheckBox {
       margin-top: 12px;
@@ -37,7 +40,7 @@
     display: flex;
     text-align: center;
     flex-direction: column;
-    margin-top: 20px;
+    padding-top: 20px;
 
     .subTitleBody2 {
       margin: 0;
@@ -48,6 +51,7 @@
 
     .subTitleLink {
       margin: 0;
+      padding-top: 11px;
       font-size: 16px;
       font-weight: 700;
     }

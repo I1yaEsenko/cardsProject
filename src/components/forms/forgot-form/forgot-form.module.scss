@@ -1,9 +1,14 @@
 
+.wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 420px;
 
   .card {
     padding: 0;
   }
-  .link{
+
+  .link {
     margin: 0;
   }
 
@@ -13,7 +18,7 @@
 
     .typographyTitle {
       margin: 0;
-      text-align: center ;
+      text-align: center;
     }
   }
 
@@ -21,7 +26,7 @@
     padding-bottom: 65px;
 
     .emailTypography {
-      padding-top: 19px;
+
       //color: #C3C1C7;
       color: var(--color-light-900);
 
@@ -38,5 +43,7 @@
       padding: 20px 0 7px 0;
     }
   }
+
+}
 
 

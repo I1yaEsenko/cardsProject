@@ -4,7 +4,7 @@ import SignIn from "@/components/forms/sign-in/sign-in";
 const meta = {
     component: SignIn,
     tags: ['autodocs'],
-    title: 'form/sign-in',
+    title: 'Auth/sign-in',
 } satisfies Meta<typeof SignIn>
 export default meta
 type Story = StoryObj<typeof meta>
