@@ -26,7 +26,7 @@ const ControlledCheckbox = <T extends FieldValues>(
 
     })
     return (
-        <Checkbox checked={value} disabled={disabled} label={label} onBlur={onBlur} onValueChange={onChange}
+        <Checkbox checked={value}  name={name} disabled={disabled} label={label} onBlur={onBlur} onValueChange={onChange}
                   ref={ref} {...rest}/>
     );
 };

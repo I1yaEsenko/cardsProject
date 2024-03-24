@@ -7,7 +7,6 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {DevTool} from "@hookform/devtools";
 import ControlledInput from "@/components/ui/controlled/controlled-input/controlled-input";
 import ControlledCheckbox from "@/components/ui/controlled/controlled-checkbox/controlled-checkbox";
-// import ControlledInput from "@/components/ui/controlled/controlled-input";
 
 const loginSchema = z.object({
     email: z.string().email(),
@@ -19,10 +18,8 @@ export const LogInForm = () => {
     const {
         control,
         handleSubmit,
-        formState: {errors}
     } = useForm<FormValues>({resolver: zodResolver(loginSchema),})
 
-    console.log(errors)
     const onSubmit = (data: FormValues) => {
         console.log(data)
     }

@@ -3,11 +3,12 @@ import {Input, InputProps} from "@/components/ui/input";
 
 type Props<T extends FieldValues> =
     {
-        control: Control<T>,
+        control?: Control<T>,
         name: Path<T>,
-        label: string
+        label?: string
     } & Omit<InputProps,'onChange'| 'value'| 'label'>
 const ControlledInput = <T extends FieldValues>({control,label, ...rest}: Props<T>) => {
+
     const {field, fieldState: {error}} = useController({
         control: control,
         name: rest.name

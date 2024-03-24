@@ -1,4 +1,4 @@
-import s from "@/components/forms/signInForm/signInForm.module.scss";
+import s from "@/components/forms/sign-in/sign-in.module.scss";
 import {Typography} from "@/components/ui/typography";
 import {TypographyVariant} from "@/components/ui/typography/enum";
 import {Input} from "@/components/ui/input";

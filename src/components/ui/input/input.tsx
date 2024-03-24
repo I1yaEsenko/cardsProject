@@ -15,12 +15,14 @@ export type InputProps = {
     label?: string
     onValueChange?: (value: string) => void
     search?: boolean
+
     variant?: 'password' | 'search' | 'text'
 } & ComponentPropsWithoutRef<'input'>
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
     (
     {
+
         className,
         errorMessage,
         placeholder,
@@ -39,7 +41,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     const [searchValue, setSearchValue] = useState('')
 
     const finalType = getType(type, showPass)
-
     function handleChange(e: ChangeEvent<HTMLInputElement>) {
         setSearchValue(e.target.value)
         onChange?.(e)
@@ -58,6 +59,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
                 <input
                     className={`${s.input} ${error ? s.error : ''} ${search ? s.search : ''}`}
                     {...rest}
+
                     ref={ref}
                     onChange={handleChange}
                     placeholder={placeholder}

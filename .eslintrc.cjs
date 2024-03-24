@@ -7,6 +7,9 @@ module.exports = {
         'react-hooks/rules-of-hooks': 'off',
         'no-console': 'off',
       },
+      experimental:{
+
+      }
     },
   ],
 }

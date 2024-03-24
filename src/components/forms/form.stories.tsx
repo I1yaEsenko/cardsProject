@@ -1,7 +1,7 @@
 import {Meta, StoryObj} from "@storybook/react";
 import Form from "@/components/forms/form";
 import SignUpForm from "@/components/forms/signUpForm/signUpForm";
-import SignInForm from "@/components/forms/signInForm/signInForm";
+import SignIn from "@/components/forms/sign-in/sign-in";
 import ForgotForm from "@/components/forms/forgotForm/forgotForm";
 
 const meta = {
@@ -20,7 +20,7 @@ export const SignUpFormStory: Story = {
 }
 export const SignInFormStory: Story = {
     args: {
-        children: SignInForm()
+        children: SignIn()
     }
 
 }

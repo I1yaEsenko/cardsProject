@@ -8,15 +8,18 @@ import cn from 'classnames'
 
 import s from './checkbox.module.scss'
 
+
 type CheckBox = {
     label?: string,
     onValueChange?: (checked: boolean) => void
+
     checked?: boolean
 } & Omit<ComponentPropsWithoutRef<typeof CheckboxRadix.Root>, 'asChild'>
 
 export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, CheckBox>(
     (
         {
+            name,
             className,
             checked,
             disabled,
@@ -24,6 +27,7 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, CheckB
             label,
             ...rest
         }, ref) => {
+
         return (
             <Typography
                 as={'label'}
