@@ -1,1 +1,1 @@
-export * from './controlled-input'
+export { ControlledInput } from './controlled-input'

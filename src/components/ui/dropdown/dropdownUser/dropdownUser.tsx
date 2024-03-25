@@ -17,15 +17,17 @@ const DropdownUser = () => {
         </span>
         <span>
           <Typography
-            children={'Ivan'}
             style={{ marginBottom: '0', marginTop: '0' }}
             variant={TypographyVariant.subtitle2}
-          />
+          >
+            Ivan
+          </Typography>
           <Typography
-            children={'j&johnson@gmail.com'}
             style={{ color: '#808080', marginBottom: '0', marginTop: '0' }}
             variant={TypographyVariant.caption}
-          />
+          >
+            j&johnson@gmail.com
+          </Typography>
         </span>
       </DropdownMenu.Item>
 
@@ -34,10 +36,11 @@ const DropdownUser = () => {
           <UserIcon />{' '}
         </span>
         <Typography
-          children={'My Profile'}
           style={{ marginBottom: '0', marginTop: '0' }}
           variant={TypographyVariant.caption}
-        />
+        >
+          My Profile
+        </Typography>
       </DropdownMenu.Item>
 
       <DropdownMenu.Item className={s.dropdownMenuItem}>
@@ -45,10 +48,11 @@ const DropdownUser = () => {
           <SignOutIcon />{' '}
         </span>
         <Typography
-          children={'Sign Out'}
           style={{ marginBottom: '0', marginTop: '0' }}
           variant={TypographyVariant.caption}
-        />
+        >
+          Sign Out
+        </Typography>
       </DropdownMenu.Item>
     </>
   )

@@ -40,6 +40,7 @@ export const AsLink: Story = {
   args: {
     as: 'a',
     children: 'Link that looks like a button',
+    href: 'https://google.com',
     variant: 'primary',
   },
 }

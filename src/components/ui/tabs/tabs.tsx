@@ -9,25 +9,19 @@ const Switcher = () => {
     <Tabs.Root className={s.tabsRoot} defaultValue={'tab1'}>
       <Tabs.List aria-label={'Manage your account'} className={s.tabsList}>
         <Tabs.Trigger className={s.tabsTrigger} value={'tab1'}>
-          <Typography
-            children={'Switcher'}
-            className={s.tabsText}
-            variant={TypographyVariant.body1}
-          />
+          <Typography className={s.tabsText} variant={TypographyVariant.body1}>
+            Switcher
+          </Typography>
         </Tabs.Trigger>
         <Tabs.Trigger className={s.tabsTrigger} value={'tab1'}>
-          <Typography
-            children={'Switcher'}
-            className={s.tabsText}
-            variant={TypographyVariant.body1}
-          />
+          <Typography className={s.tabsText} variant={TypographyVariant.body1}>
+            Switcher
+          </Typography>
         </Tabs.Trigger>
         <Tabs.Trigger className={s.tabsTrigger} disabled value={'tab1'}>
-          <Typography
-            children={'Switcher'}
-            className={s.tabsText}
-            variant={TypographyVariant.body1}
-          />
+          <Typography className={s.tabsText} variant={TypographyVariant.body1}>
+            Switcher
+          </Typography>
         </Tabs.Trigger>
       </Tabs.List>
     </Tabs.Root>
