@@ -1,3 +1,7 @@
+.wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 420px;
 
   .typographyTitleWrapper {
     padding: 0 24px;
@@ -11,6 +15,18 @@
 
   .typographyWrapper {
     padding-bottom: 60px;
+
+    .email {
+
+    }
+
+    .password {
+padding: 24px 0 ;
+    }
+
+    .confirmPassword {
+
+    }
 
     .typographyWrapperEmail {
       margin-bottom: 34px;
@@ -47,3 +63,4 @@
       font-weight: 700;
     }
   }
+}
