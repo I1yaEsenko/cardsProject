@@ -1,28 +1,21 @@
 .button {
   all: unset;
-
   cursor: pointer;
-
-  display: flex;
-  justify-content: center;
-
+  outline: none;
   box-sizing: border-box;
 
   font-family: inherit;
-  font-size: var(--font-size-s);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-m);
   color: inherit;
-
   border-radius: 4px;
-  outline: none;
-
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-m);
   transition: background-color 0.5s linear;
 
   &:focus-visible {
     outline: 2px solid var(--color-info-500);
   }
-}
+
 
 .primary {
   padding: 6px 28px;
@@ -77,7 +70,8 @@
   }
 }
 
-.fullWidth {
-  width: 100%;
-  text-align: center;
+  .fullWidth {
+    width: 100%;
+    text-align: center;
+  }
 }
