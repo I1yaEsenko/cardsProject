@@ -10,15 +10,19 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof meta>
+
+const options = [
+  { title: '5', value: '5' },
+  { title: '10', value: '10' },
+  { title: '20', value: '20' },
+  { title: '30', value: '30' },
+]
+
 export const Primary: Story = {
   args: {
-    label: 'text',
-    options: [
-      { title: '5', value: '5' },
-      { title: '10', value: '10' },
-      { title: '20', value: '20' },
-      { title: '30', value: '30' },
-    ],
+    defaultValue: options[2].value,
+    label: 'Select Item',
+    options,
     setForm: fn(),
   },
 }

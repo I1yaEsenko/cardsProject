@@ -1,1 +1,1 @@
-export { default as ForgotForm } from './forgot-form'
+export { ForgotForm } from './forgot-form'

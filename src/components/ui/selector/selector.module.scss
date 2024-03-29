@@ -1,14 +1,18 @@
 .trigger{
   background-color: transparent;
   padding: 6px 12px;
-  width: 210px;
+  width: 59.3px;
   color: var(--color-light-100);
   border: 1px solid var(--color-dark-300);
   outline: none;
+  display: flex;
+  justify-content: space-between;
+  .icon{
+    display: flex;
+  }
   &[data-state = 'open']{
     .icon{
       transform: rotate(180deg);
-
     }
   }
   &:hover{
@@ -19,14 +23,15 @@
   }
 }
 .content{
-  width: 210px;
+
   border: 1px solid var(--color-dark-300);
   border-top: none;
 
 }
 .item{
   outline: none;
-padding: 6px 11px;
+  padding: 6px 11px;
+  width: 59.3px;
   &:hover{
     background-color: var(--color-accent-900);
     color: var(--color-accent-300)
