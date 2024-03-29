@@ -1,27 +1,37 @@
-import { Select } from '@/components/ui/selector/Select/Select'
-import { SelectItem } from '@/components/ui/selector/SelectItem/SelectItem'
-
+import { Select } from '@/components/ui/selector/Select/select'
+import { SelectItem } from '@/components/ui/selector/SelectItem/selectItem'
+import { Typography } from '@/components/ui/typography'
+import { TypographyVariant } from '@/components/ui/typography/enum'
 type OptionsProps = {
   title: string
   value: string
 }
 type SelectProps = {
-  label: string
+  defaultValue?: string
+  label?: string
   options: OptionsProps[]
-  setForm: (value: string) => void
+  setForm?: (value: string) => void
 }
 export const Selector = (props: SelectProps) => {
   const onClick = (data: string) => {
-    props.setForm(data)
+    if (props.setForm !== undefined) {
+      props.setForm(data)
+    }
   }
 
+  const initialValue = props.defaultValue ? props.defaultValue : props.options[0].value
+
   return (
-    <Select defaultValue={'2'} onValueChange={onClick}>
-      {props.options.map(el => (
-        <SelectItem key={el.value} value={el.value}>
-          {el.value}
-        </SelectItem>
-      ))}
-    </Select>
+    <>
+      {props.label && <Typography variant={TypographyVariant.body2}>{props.label}</Typography>}
+
+      <Select defaultValue={initialValue} label={props.label} onValueChange={onClick}>
+        {props.options.map(el => (
+          <SelectItem key={el.value} value={el.value}>
+            {el.value}
+          </SelectItem>
+        ))}
+      </Select>
+    </>
   )
 }

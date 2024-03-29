@@ -5,15 +5,24 @@ import * as SelectPrimitive from '@radix-ui/react-select'
 
 import s from '@/components/ui/selector/selector.module.scss'
 
-type SelectProps = ComponentPropsWithoutRef<typeof SelectPrimitive.Root>
+type SelectProps = {
+  defaultValue: string
+  label?: string
+  onValueChange: (data: string) => void
+} & ComponentPropsWithoutRef<typeof SelectPrimitive.Root>
 export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, SelectProps>(
-  ({ children, ...props }, ref) => {
+  ({ children, label, ...props }, ref) => {
+    const classNames = {
+      content: s.content,
+      icon: s.icon,
+      trigger: s.trigger,
+    }
+
     return (
       <SelectPrimitive.Root {...props}>
-        <SelectPrimitive.Trigger className={s.trigger} ref={ref}>
+        <SelectPrimitive.Trigger className={classNames.trigger} ref={ref}>
           <SelectPrimitive.Value />
-          <SelectPrimitive.Icon className={s.icon}>
-            {/*<ChevronDownIcon />*/}
+          <SelectPrimitive.Icon className={classNames.icon}>
             <ArrowDown height={'16'} width={'16'} />
           </SelectPrimitive.Icon>
         </SelectPrimitive.Trigger>
