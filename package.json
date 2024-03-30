@@ -1,17 +1,4 @@
 {
-  "name": "cardsproject",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite --open --port 3000",
-    "build": "tsc && vite build",
-    "format": "prettier --write src",
-    "lint": "eslint src --ext .jsx,.js,.tsx,.ts  --no-error-on-unmatched-pattern --fix && stylelint --fix src/{,*/}*.{scss,css} --allow-empty-input",
-    "preview": "vite preview",
-    "sb": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
-  },
   "dependencies": {
     "@fontsource/roboto": "^5.0.8",
     "@hookform/resolvers": "^3.3.4",
@@ -58,5 +45,18 @@
     "stylelint": "^16.2.1",
     "typescript": "^5.2.2",
     "vite": "^5.1.4"
-  }
+  },
+  "name": "cardsproject",
+  "private": true,
+  "scripts": {
+    "build": "tsc && vite build",
+    "build-storybook": "storybook build",
+    "dev": "vite --open --port 3000",
+    "format": "prettier --write src",
+    "lint": "eslint src --ext .jsx,.js,.tsx,.ts  --no-error-on-unmatched-pattern --fix && stylelint --fix src/{,*/}*.{scss,css} --allow-empty-input",
+    "preview": "vite preview",
+    "sb": "storybook dev -p 6006"
+  },
+  "typex": "module",
+  "version": "0.0.0"
 }

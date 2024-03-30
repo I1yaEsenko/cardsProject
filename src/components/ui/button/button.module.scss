@@ -18,6 +18,7 @@
 
 
 .primary {
+  background-color: var(--color-accent-500);
   padding: 6px 28px;
   background-color: var(--color-accent-500);
   box-shadow: 0 4px 18px 0 rgb(140 97 255 / 35%);
@@ -42,6 +43,8 @@
     outline: 2px solid var(--color-info-700);
     box-shadow: 0 4px 18px 0 rgb(140 97 255 / 35%);
   }
+
+
 }
 
 .secondary {
@@ -66,6 +69,7 @@
 
   &:focus {
     background-color: var(--color-dark-300);
+    //border: 2px solid var(--color-info-700);
     outline: 2px solid var(--color-info-700);
   }
 }

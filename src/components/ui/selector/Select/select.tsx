@@ -2,24 +2,27 @@ import React, { ComponentPropsWithoutRef, ElementRef } from 'react'
 
 import ArrowDown from '@/components/icons/ArrowDown'
 import * as SelectPrimitive from '@radix-ui/react-select'
+import { clsx } from 'clsx'
 
-import s from '@/components/ui/selector/selector.module.scss'
+import s from '@/components/ui/selector/Select/select.module.scss'
 
 type SelectProps = {
   defaultValue: string
+  disabled?: boolean
   label?: string
+  large?: boolean
   onValueChange: (data: string) => void
-} & ComponentPropsWithoutRef<typeof SelectPrimitive.Root>
+} & Omit<ComponentPropsWithoutRef<typeof SelectPrimitive.Root>, 'disabled'>
 export const Select = React.forwardRef<ElementRef<typeof SelectPrimitive.Root>, SelectProps>(
-  ({ children, label, ...props }, ref) => {
+  ({ children, disabled, label, large, ...props }, ref) => {
     const classNames = {
-      content: s.content,
+      content: clsx(s.content, s.disabled),
       icon: s.icon,
-      trigger: s.trigger,
+      trigger: clsx(s.trigger, large ? s.large : s.small, disabled ? s.disabled : ''),
     }
 
     return (
-      <SelectPrimitive.Root {...props}>
+      <SelectPrimitive.Root disabled={disabled} {...props}>
         <SelectPrimitive.Trigger className={classNames.trigger} ref={ref}>
           <SelectPrimitive.Value />
           <SelectPrimitive.Icon className={classNames.icon}>
