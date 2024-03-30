@@ -1,0 +1,21 @@
+.item {
+  display: flex;
+  align-items: center;
+  outline: none;
+
+  &:hover {
+    color: var(--color-accent-300);
+    background-color: var(--color-accent-900);
+  }
+}
+
+.large {
+  width: 208px;
+  padding: 6px 11px;
+}
+
+.small {
+  width: 49px;
+  height: 24px;
+  padding: 6px 7px;
+}

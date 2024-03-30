@@ -15,10 +15,11 @@ const DropdownLogin = () => {
           <Player />{' '}
         </span>
         <Typography
-          children={'Learn'}
           style={{ marginBottom: '0', marginTop: '0' }}
           variant={TypographyVariant.caption}
-        />
+        >
+          Learn
+        </Typography>
       </DropdownMenu.Item>
 
       <DropdownMenu.Item className={s.dropdownMenuItem}>
@@ -26,10 +27,11 @@ const DropdownLogin = () => {
           <Pin />{' '}
         </span>
         <Typography
-          children={'Edit'}
           style={{ marginBottom: '0', marginTop: '0' }}
           variant={TypographyVariant.caption}
-        />
+        >
+          Edit
+        </Typography>
       </DropdownMenu.Item>
 
       <DropdownMenu.Item className={s.dropdownMenuItem}>
@@ -37,10 +39,11 @@ const DropdownLogin = () => {
           <Basket />{' '}
         </span>
         <Typography
-          children={'Delete'}
           style={{ marginBottom: '0', marginTop: '0' }}
           variant={TypographyVariant.caption}
-        />
+        >
+          Delete
+        </Typography>
       </DropdownMenu.Item>
     </>
   )
