@@ -21,7 +21,9 @@ const options = [
 export const Primary: Story = {
   args: {
     defaultValue: options[2].value,
-    label: 'Select Item',
+    disabled: true,
+    label: 'kfkf',
+    large: true,
     options,
     setForm: fn(),
   },
