@@ -42,7 +42,6 @@ const DropdownUser = () => {
           My Profile
         </Typography>
       </DropdownMenu.Item>
-
       <DropdownMenu.Item className={s.dropdownMenuItem}>
         <span className={s.dropdownMenuItemSpan}>
           <SignOutIcon />{' '}
