@@ -11,6 +11,9 @@ html {
 *::after {
   box-sizing: border-box;
 }
+p {
+  margin: 0;
+}
 
 input,
 button,
