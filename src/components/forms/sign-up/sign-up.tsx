@@ -83,12 +83,7 @@ export const SignUp = () => {
           <Typography className={s.subTitleBody2} variant={TypographyVariant.body2}>
             Already have an account?
           </Typography>
-          <Typography
-            as={'a'}
-            className={s.subTitleLink}
-            href={'https://www.google.com/'}
-            variant={TypographyVariant.link1}
-          >
+          <Typography className={s.subTitleLink} variant={TypographyVariant.link1}>
             Sign In
           </Typography>
         </div>

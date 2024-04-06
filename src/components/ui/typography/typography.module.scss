@@ -3,22 +3,26 @@
   font-weight: var(--font-weight-bold);
 }
 
+a {
+  color: var(--color-primary-);
+}
+
 .body1 {
   font-size: var(--font-size-m);
-  line-height: var(--line-height-m);
   font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-m);
 }
 
 .body2 {
   font-size: var(--font-size-s);
-  line-height: var(--line-height-m);
   font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-m);
 }
 
 .caption {
   font-size: var(--font-size-xs);
-  line-height: var(--line-height-s);
   font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-s);
 }
 
 .h1 {
@@ -42,20 +46,26 @@
 }
 
 .link1 {
-  font-size: var(--font-size-s);
-  line-height: var(--line-height-m);
-  font-weight: var(--font-weight-regular);
-  color: var(--color-info-500);
   cursor: pointer;
+
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-m);
+  color: var(--color-info-500);
   text-decoration: underline;
+
+  .link1 a {
+    color: var(--color-info-500);
+  }
 }
 
 .link2 {
-  font-size: var(--font-size-xs);
-  line-height: var(--line-height-s);
-  font-weight: var(--font-weight-regular);
-  color: var(--color-info-500);
   cursor: pointer;
+
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-s);
+  color: var(--color-info-500);
   text-decoration: underline;
 }
 

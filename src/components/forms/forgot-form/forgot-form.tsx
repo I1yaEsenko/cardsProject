@@ -40,15 +40,16 @@ export const ForgotForm = () => {
             </Typography>
           </div>
           <div className={s.typographyBottom}>
-            <Button fullWidth type={'submit'}>
+            <Button className={s.button} fullWidth type={'submit'}>
               Send Instructions
             </Button>
 
             <Typography className={s.typographyBottomBody2} variant={TypographyVariant.body2}>
               Did you remember your password?
             </Typography>
-            <Typography className={s.link} variant={TypographyVariant.link1}>
-              Did you remember your password?
+
+            <Typography className={s.link} variant={TypographyVariant.link2}>
+              Try logging in
             </Typography>
           </div>
         </form>
