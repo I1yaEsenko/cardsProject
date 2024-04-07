@@ -1,24 +1,27 @@
 .button {
   all: unset;
+
   cursor: pointer;
-  outline: none;
+
   box-sizing: border-box;
 
   font-family: inherit;
-  color: inherit;
-  border-radius: 4px;
-  font-weight: var(--font-weight-bold);
   font-size: var(--font-size-s);
+  font-weight: var(--font-weight-bold);
   line-height: var(--line-height-m);
+  color: inherit;
+
+  border-radius: 4px;
+  outline: none;
+
   transition: background-color 0.5s linear;
 
   &:focus-visible {
     outline: 2px solid var(--color-info-500);
   }
-
+}
 
 .primary {
-  background-color: var(--color-accent-500);
   padding: 6px 28px;
   background-color: var(--color-accent-500);
   box-shadow: 0 4px 18px 0 rgb(140 97 255 / 35%);
@@ -43,8 +46,6 @@
     outline: 2px solid var(--color-info-700);
     box-shadow: 0 4px 18px 0 rgb(140 97 255 / 35%);
   }
-
-
 }
 
 .secondary {
@@ -69,6 +70,7 @@
 
   &:focus {
     background-color: var(--color-dark-300);
+
     //border: 2px solid var(--color-info-700);
     outline: 2px solid var(--color-info-700);
   }
