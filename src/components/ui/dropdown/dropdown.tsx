@@ -12,7 +12,7 @@ export type PropsType = {
 }
 const Dropdown = ({ children, iconButton }: PropsType) => {
   return (
-    <DropdownMenu.Root>
+    <DropdownMenu.Root open>
       <DropdownMenu.Trigger asChild>
         <button aria-label={'Customise options'} className={s.IconButton}>
           {iconButton}

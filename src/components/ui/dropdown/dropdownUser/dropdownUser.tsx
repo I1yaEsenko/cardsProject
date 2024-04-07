@@ -4,55 +4,39 @@ import { Typography } from '@/components/ui/typography'
 import { TypographyVariant } from '@/components/ui/typography/enum'
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 
-import s from '../dropdown.module.scss'
+// import s from '@/dropdown.module.scss'
+// import * as s from 'src/components/ui/dropdown/dropdownUser/dropdownUser.module.scss'
+import s from './dropdownUser.module.scss'
 
 import Img from '../../../../assets/icons/user.png'
 
 const DropdownUser = () => {
   return (
     <>
-      <DropdownMenu.Item className={s.dropdownMenuItem}>
-        <span className={s.dropdownMenuItemSpan}>
-          <img src={Img} />{' '}
-        </span>
+      <DropdownMenu.Item className={s.dropdownMenuTop}>
+        <img alt={'item span'} className={s.dropdownMenuItemSpan} src={Img} />
         <span>
-          <Typography
-            style={{ marginBottom: '0', marginTop: '0' }}
-            variant={TypographyVariant.subtitle2}
-          >
+          <Typography className={s.user} variant={TypographyVariant.subtitle2}>
             Ivan
           </Typography>
-          <Typography
-            style={{ color: '#808080', marginBottom: '0', marginTop: '0' }}
-            variant={TypographyVariant.caption}
-          >
+          <Typography className={s.user} variant={TypographyVariant.caption}>
             j&johnson@gmail.com
           </Typography>
         </span>
       </DropdownMenu.Item>
-
+      <DropdownMenu.Separator className={s.dropdownSeparator} />
       <DropdownMenu.Item className={s.dropdownMenuItem}>
         <span className={s.dropdownMenuItemSpan}>
-          <UserIcon />{' '}
+          <UserIcon />
         </span>
-        <Typography
-          style={{ marginBottom: '0', marginTop: '0' }}
-          variant={TypographyVariant.caption}
-        >
-          My Profile
-        </Typography>
+        <Typography variant={TypographyVariant.caption}>My Profile</Typography>
       </DropdownMenu.Item>
-
-      <DropdownMenu.Item className={s.dropdownMenuItem}>
+      <DropdownMenu.Separator className={s.dropdownSeparator} />
+      <DropdownMenu.Item className={s.dropdownMenuItemBottom}>
         <span className={s.dropdownMenuItemSpan}>
           <SignOutIcon />{' '}
         </span>
-        <Typography
-          style={{ marginBottom: '0', marginTop: '0' }}
-          variant={TypographyVariant.caption}
-        >
-          Sign Out
-        </Typography>
+        <Typography variant={TypographyVariant.caption}>Sign Out</Typography>
       </DropdownMenu.Item>
     </>
   )

@@ -1,3 +1,3 @@
 export function App() {
-  return <div>Cards project </div>
+  return <div>App Component</div>
 }

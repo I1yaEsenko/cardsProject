@@ -1,5 +1,7 @@
 import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
 
+import { clsx } from 'clsx'
+
 import s from './card.module.scss'
 
 export type CardProps<T extends ElementType = 'div'> = {
@@ -9,13 +11,7 @@ export type CardProps<T extends ElementType = 'div'> = {
 } & ComponentPropsWithoutRef<T>
 
 export const Card = <T extends ElementType = 'div'>(props: CardProps<T>) => {
-  const { as: Component = 'div', children, title, ...rest } = props
+  const { as: Component = 'div', className, title, ...rest } = props
 
-  return (
-    <div className={s.card}>
-      <Component className={s.content} {...rest}>
-        {children}
-      </Component>
-    </div>
-  )
+  return <Component className={clsx(s.card, className)} {...rest} />
 }
