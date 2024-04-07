@@ -10,6 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
 import s from './sign-up.module.scss'
+
 const logOutSchema = z
   .object({
     confirmPassword: z.string().min(3),
@@ -38,59 +39,48 @@ export const SignUp = ({ onSubmit }: PropsType) => {
   }
 
   return (
-    <div className={s.wrapper}>
-      <Card>
-        <div className={s.typographyTitleWrapper}>
-          <Typography className={s.typographyTitle} variant={TypographyVariant.h1}>
-            Sign Up
-          </Typography>
+    <Card className={s.card}>
+      <Typography className={s.title} variant={TypographyVariant.h1}>
+        Sign Up
+      </Typography>
+      <form onSubmit={handleSubmit(onSubmitHandler)}>
+        <div className={s.typographyWrapper}>
+          <ControlledInput
+            className={s.email}
+            control={control}
+            label={'Email'}
+            name={'email'}
+            placeholder={'Email'}
+          />
+          <ControlledInput
+            control={control}
+            label={'Password'}
+            name={'password'}
+            placeholder={'Password'}
+            type={'password'}
+            variant={'password'}
+          />
+          <ControlledInput
+            control={control}
+            label={'Confirm password'}
+            name={'confirmPassword'}
+            placeholder={'Confirm password'}
+            type={'password'}
+            variant={'password'}
+          />
         </div>
-        <form onSubmit={handleSubmit(onSubmitHandler)}>
-          <div className={s.typographyWrapper}>
-            <div className={s.email}>
-              <ControlledInput
-                control={control}
-                label={'Email'}
-                name={'email'}
-                placeholder={'Email'}
-              />
-            </div>
-            <div className={s.password}>
-              <ControlledInput
-                control={control}
-                label={'Password'}
-                name={'password'}
-                placeholder={'Password'}
-                type={'password'}
-                variant={'password'}
-              />
-            </div>
-            <div className={s.confirmPassword}>
-              <ControlledInput
-                control={control}
-                label={'Confirm password'}
-                name={'confirmPassword'}
-                placeholder={'Confirm password'}
-                type={'password'}
-                variant={'password'}
-              />
-            </div>
-          </div>
-          <div className={s.button}>
-            <Button fullWidth type={'submit'}>
-              Sign Up
-            </Button>
-          </div>
-        </form>
-        <div className={s.subTitle}>
-          <Typography className={s.subTitleBody2} variant={TypographyVariant.body2}>
-            Already have an account?
-          </Typography>
-          <Typography className={s.subTitleLink} variant={TypographyVariant.link1}>
-            Sign In
-          </Typography>
-        </div>
-      </Card>
-    </div>
+        <Button className={s.button} fullWidth type={'submit'}>
+          Sign Up
+        </Button>
+      </form>
+      <div className={s.subTitle}>
+        <Typography className={s.subTitleBody2} variant={TypographyVariant.body2}>
+          Already have an account?
+        </Typography>
+        <Typography className={s.subTitleLink} variant={TypographyVariant.link1}>
+          Sign In
+        </Typography>
+      </div>
+    </Card>
   )
 }

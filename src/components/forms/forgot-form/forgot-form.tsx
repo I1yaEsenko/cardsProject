@@ -27,36 +27,34 @@ export const ForgotForm = ({ onSubmit }: PropsType) => {
   }
 
   return (
-    <div className={s.wrapper}>
-      <Card>
-        <div className={s.typographyTitleWrapper}>
-          <Typography className={s.typographyTitle} variant={TypographyVariant.h1}>
-            Forgot your password?
+    <Card className={s.wrapper}>
+      <div className={s.typographyTitleWrapper}>
+        <Typography className={s.typographyTitle} variant={TypographyVariant.h1}>
+          Forgot your password?
+        </Typography>
+      </div>
+      <form onSubmit={handleSubmit(onSubmitHandler)}>
+        <div className={s.typographyEmailWrapper}>
+          <ControlledInput control={control} label={'Email'} name={'email'} />
+
+          <Typography className={s.emailTypography} variant={TypographyVariant.body2}>
+            Enter your email address and we will send you further instructions
           </Typography>
         </div>
-        <form onSubmit={handleSubmit(onSubmitHandler)}>
-          <div className={s.typographyEmailWrapper}>
-            <ControlledInput control={control} label={'Email'} name={'email'} />
+        <div className={s.typographyBottom}>
+          <Button className={s.button} fullWidth type={'submit'}>
+            Send Instructions
+          </Button>
 
-            <Typography className={s.emailTypography} variant={TypographyVariant.body2}>
-              Enter your email address and we will send you further instructions
-            </Typography>
-          </div>
-          <div className={s.typographyBottom}>
-            <Button className={s.button} fullWidth type={'submit'}>
-              Send Instructions
-            </Button>
+          <Typography className={s.typographyBottomBody2} variant={TypographyVariant.body2}>
+            Did you remember your password?
+          </Typography>
 
-            <Typography className={s.typographyBottomBody2} variant={TypographyVariant.body2}>
-              Did you remember your password?
-            </Typography>
-
-            <Typography className={s.link} variant={TypographyVariant.link2}>
-              Try logging in
-            </Typography>
-          </div>
-        </form>
-      </Card>
-    </div>
+          <Typography className={s.link} variant={TypographyVariant.link2}>
+            Try logging in
+          </Typography>
+        </div>
+      </form>
+    </Card>
   )
 }
