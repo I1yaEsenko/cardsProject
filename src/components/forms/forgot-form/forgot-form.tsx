@@ -16,11 +16,14 @@ const forgotSchema = z.object({
 })
 
 type FormType = z.infer<typeof forgotSchema>
-export const ForgotForm = () => {
+type PropsType = {
+  onSubmit: (data: FormType) => void
+}
+export const ForgotForm = ({ onSubmit }: PropsType) => {
   const { control, handleSubmit } = useForm<FormType>({ resolver: zodResolver(forgotSchema) })
 
-  const onSubmit = (data: FormType) => {
-    console.log(data)
+  const onSubmitHandler = (data: FormType) => {
+    onSubmit(data)
   }
 
   return (
@@ -31,7 +34,7 @@ export const ForgotForm = () => {
             Forgot your password?
           </Typography>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmitHandler)}>
           <div className={s.typographyEmailWrapper}>
             <ControlledInput control={control} label={'Email'} name={'email'} />
 

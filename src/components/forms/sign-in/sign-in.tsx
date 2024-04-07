@@ -19,10 +19,13 @@ const loginSchema = z.object({
 })
 
 type FormValues = z.infer<typeof loginSchema>
-export const SignIn = () => {
+type PropsType = {
+  onSubmit: (data: FormValues) => void
+}
+export const SignIn = ({ onSubmit }: PropsType) => {
   const { control, handleSubmit } = useForm<FormValues>({ resolver: zodResolver(loginSchema) })
-  const onSubmit = (data: FormValues) => {
-    console.log(data)
+  const onSubmitHandler = (data: FormValues) => {
+    onSubmit(data)
   }
 
   return (
@@ -33,7 +36,7 @@ export const SignIn = () => {
             Sign In
           </Typography>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmitHandler)}>
           <div className={s.typographyWrapper}>
             <div className={s.email}>
               <ControlledInput control={control} label={'Email'} name={'email'} />
