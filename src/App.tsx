@@ -1,3 +1,9 @@
+import { Tab } from '@/components/ui/table/tabel'
+
 export function App() {
-  return <div>App Component</div>
+  return (
+    <div>
+      <Tab />
+    </div>
+  )
 }
