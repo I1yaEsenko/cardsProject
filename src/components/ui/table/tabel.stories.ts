@@ -3,6 +3,7 @@ import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
   component: Render,
+  parameters: {},
   tags: ['autodocs'],
   title: 'Components/Tabel',
 } satisfies Meta<typeof Render>

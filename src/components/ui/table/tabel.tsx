@@ -1,14 +1,25 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
+import { clsx } from 'clsx'
+
 import s from './table.module.scss'
+
 export const Table = forwardRef<HTMLTableElement, ComponentPropsWithoutRef<'table'>>(
-  ({ ...rest }, ref) => {
-    return <table {...rest} ref={ref} />
+  ({ className, ...rest }, ref) => {
+    const classes = {
+      table: clsx(s.table, className),
+    }
+
+    return <table className={classes.table} {...rest} ref={ref} />
   }
 )
 export const TableHead = forwardRef<ElementRef<'thead'>, ComponentPropsWithoutRef<'thead'>>(
-  ({ ...rest }, ref) => {
-    return <thead {...rest} ref={ref} />
+  ({ className, ...rest }, ref) => {
+    const classes = {
+      thead: clsx(s.thead, className),
+    }
+
+    return <thead className={classes.thead} {...rest} ref={ref} />
   }
 )
 export const TableBody = forwardRef<ElementRef<'tbody'>, ComponentPropsWithoutRef<'tbody'>>(
@@ -22,27 +33,39 @@ export const TableRow = forwardRef<ElementRef<'tr'>, ComponentPropsWithoutRef<'t
   }
 )
 export const Td = forwardRef<ElementRef<'td'>, ComponentPropsWithoutRef<'td'>>(
-  ({ children, ...rest }, ref) => {
+  ({ children, className, ...rest }, ref) => {
+    const classes = {
+      td: clsx(s.td, className),
+    }
+
     return (
-      <td {...rest} ref={ref}>
+      <td className={classes.td} {...rest} ref={ref}>
         {children}
       </td>
     )
   }
 )
 export const Th = forwardRef<ElementRef<'th'>, ComponentPropsWithoutRef<'th'>>(
-  ({ children, ...rest }, ref) => {
+  ({ children, className, ...rest }, ref) => {
+    const classes = {
+      th: clsx(s.th, className),
+    }
+
     return (
-      <th {...rest} ref={ref}>
+      <th className={classes.th} {...rest} ref={ref}>
         <span>{children}</span>
       </th>
     )
   }
 )
 export const Tr = forwardRef<ElementRef<'tr'>, ComponentPropsWithoutRef<'tr'>>(
-  ({ children, ...rest }, ref) => {
+  ({ children, className, ...rest }, ref) => {
+    const classes = {
+      tr: clsx(s.tr, className),
+    }
+
     return (
-      <tr {...rest} ref={ref}>
+      <tr className={classes.tr} {...rest} ref={ref}>
         {children}
       </tr>
     )
@@ -51,8 +74,8 @@ export const Tr = forwardRef<ElementRef<'tr'>, ComponentPropsWithoutRef<'tr'>>(
 
 export const Render = () => {
   return (
-    <Table className={s.table}>
-      <TableHead className={s.thead}>
+    <Table>
+      <TableHead>
         <Tr>
           <Th>Name</Th>
           <Th>Cards</Th>
