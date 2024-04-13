@@ -5,12 +5,16 @@ import { clsx } from 'clsx'
 import s from './table.module.scss'
 
 export const Table = forwardRef<HTMLTableElement, ComponentPropsWithoutRef<'table'>>(
-  ({ className, ...rest }, ref) => {
+  ({ children, className, ...rest }, ref) => {
     const classes = {
       table: clsx(s.table, className),
     }
 
-    return <table className={classes.table} {...rest} ref={ref} />
+    return (
+      <table className={classes.table} {...rest} ref={ref}>
+        {children}
+      </table>
+    )
   }
 )
 export const TableHead = forwardRef<ElementRef<'thead'>, ComponentPropsWithoutRef<'thead'>>(
