@@ -15,7 +15,7 @@ const preview: Preview = {
   },
 }
 export const decorators = [
-  Story => {
+  (Story: any) => {
     return (
       <MemoryRouter>
         <Story />
