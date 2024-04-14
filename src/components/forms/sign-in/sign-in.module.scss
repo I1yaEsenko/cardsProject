@@ -21,7 +21,10 @@
 }
 
 .forgot {
+  display: block;
+  color: var(--color-light-100);
   text-align: right;
+  text-decoration: none;
 }
 
 .button {
