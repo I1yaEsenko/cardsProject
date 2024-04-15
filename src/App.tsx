@@ -18,7 +18,7 @@ export const  App = () => {
       <table>
         <thead>
         <tr>
-          <th>ID</th>
+          <th>id</th>
           <th>FIRST NAME</th>
           <th>LAST NAME</th>
           <th>EMAIL</th>
