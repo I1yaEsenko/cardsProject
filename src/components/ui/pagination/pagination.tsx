@@ -1,6 +1,6 @@
 import cn from 'classnames'
 
-import s from './Pagination.module.scss'
+import s from './pagination.module.scss'
 import { usePagination } from "@/components/ui/pagination/usePagination";
 import { Typography } from "@/components/ui/typography";
 import { TypographyVariant } from "@/components/ui/typography/enum";

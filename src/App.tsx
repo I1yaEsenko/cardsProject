@@ -1,3 +1,6 @@
+
 export function App() {
-  return <div>Cards project </div>
+  return <div>
+    <h1 style={{color: "white"}}>Pagination</h1>
+  </div>
 }
