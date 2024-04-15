@@ -9,7 +9,7 @@ type OptionsProps = {
   title: string
   value: string
 }
-type SelectProps = {
+export type SelectProps = {
   defaultValue?: string
   disabled?: boolean
   label?: string
