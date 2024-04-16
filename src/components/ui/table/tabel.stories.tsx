@@ -1,4 +1,15 @@
-import { Table, TableBody, TableHead, Td, Th, Tr } from '@/components/ui/table/tabel'
+import { useMemo, useState } from 'react'
+
+import {
+  Sort,
+  Table,
+  TableBody,
+  TableHead,
+  TableHeader,
+  Td,
+  Th,
+  Tr,
+} from '@/components/ui/table/tabel'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
@@ -55,5 +66,88 @@ export const Primary: Story = {
         </TableBody>
       </>
     ),
+  },
+}
+const data = [
+  {
+    cardsCount: 10,
+    createdBy: 'John Doe',
+    title: 'Project A',
+    updated: '2023-07-07',
+  },
+  {
+    cardsCount: 5,
+    createdBy: 'Jane Smith',
+    title: 'Project B',
+    updated: '2023-07-06',
+  },
+  {
+    cardsCount: 8,
+    createdBy: 'Alice Johnson',
+    title: 'Project C',
+    updated: '2023-07-05',
+  },
+  {
+    cardsCount: 3,
+    createdBy: 'Bob Anderson',
+    title: 'Project D',
+    updated: '2023-07-07',
+  },
+  {
+    cardsCount: 12,
+    createdBy: 'Emma Davis',
+    title: 'Project E',
+    updated: '2023-07-04',
+  },
+]
+const columns = [
+  {
+    key: 'name',
+    title: 'Name',
+  },
+  {
+    key: 'cardsCount',
+    title: 'Cards',
+  },
+  {
+    key: 'updated',
+    title: 'Last Updated',
+  },
+  {
+    key: 'createdBy',
+    title: 'Created by',
+  },
+]
+
+export const WithSorts: Story = {
+  render: () => {
+    const [sort, setSort] = useState<Sort>(null)
+    const sortedString = useMemo(() => {
+      if (!sort) {
+        return null
+      }
+      if (sort) {
+        return `${sort.key}-${sort.direction}`
+      }
+    }, [sort])
+
+    console.log(sortedString)
+    console.log(sort)
+
+    return (
+      <>
+        <TableHeader columns={columns} onSort={setSort} sort={sort} />
+        <TableBody>
+          {data.map(item => (
+            <Tr key={item.title}>
+              <Td>{item.title}</Td>
+              <Td>{item.cardsCount}</Td>
+              <Td>{item.updated}</Td>
+              <Td>{item.createdBy}</Td>
+            </Tr>
+          ))}
+        </TableBody>
+      </>
+    )
   },
 }

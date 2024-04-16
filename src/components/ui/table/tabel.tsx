@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, FC, forwardRef } from 'react'
 
 import { clsx } from 'clsx'
 
@@ -76,83 +76,53 @@ export const Tr = forwardRef<ElementRef<'tr'>, ComponentPropsWithoutRef<'tr'>>(
   }
 )
 
-export const Render = () => {
-  return (
-    <Table>
-      <TableHead>
-        <Tr>
-          <Th>Name</Th>
-          <Th>Cards</Th>
-          <Th>Last Updated</Th>
-          <Th>Created by</Th>
-          <Th />
-        </Tr>
-      </TableHead>
-      <TableBody>
-        <Tr>
-          <Td>Pack Name</Td>
-          <Td>4</Td>
-          <Td>18.02.2024</Td>
-          <Td>Pack Name</Td>
-          <Td />
-        </Tr>
-        <Tr>
-          <Td>Pack Name</Td>
-          <Td>4</Td>
-          <Td>18.02.2024</Td>
-          <Td>Pack Name</Td>
-          <Td />
-        </Tr>
-        <Tr>
-          <Td>Pack Name</Td>
-          <Td>4</Td>
-          <Td>18.02.2024</Td>
-          <Td>Pack Name</Td>
-          <Td />
-        </Tr>
-        <Tr>
-          <Td>Pack Name</Td>
-          <Td>4</Td>
-          <Td>18.02.2024</Td>
-          <Td>Pack Name</Td>
-          <Td />
-        </Tr>
-      </TableBody>
-    </Table>
-  )
+export type Column = {
+  key: string
+  title: string
 }
+export type Sort = {
+  direction: 'asc' | 'desc'
+  key: string
+} | null
+export const TableHeader: FC<
+  Omit<
+    ComponentPropsWithoutRef<'thead'> & {
+      columns: Column[]
+      onSort?: (sort: Sort) => void
+      sort?: Sort
+    },
+    'children'
+  >
+> = ({ columns, onSort, sort, ...restProps }) => {
+  const handleSort = (key: string) => {
+    if (!onSort) {
+      return
+    }
 
-export const Tab = () => {
+    if (sort?.key !== key) {
+      return onSort({ direction: 'asc', key })
+    }
+
+    if (sort.direction === 'desc') {
+      return onSort(null)
+    }
+
+    return onSort({
+      direction: sort?.direction === 'asc' ? 'desc' : 'asc',
+      key,
+    })
+  }
+
   return (
-    <table border={1}>
-      <thead>
-        <tr>
-          <th>eekwek</th>
-          <th>eekwek</th>
-          <th>eekwek</th>
-          <th>eekwek</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>rere</td>
-          <td>rere</td>
-          <td>rere</td>
-          <td>rere</td>
-        </tr>{' '}
-        <tr>
-          <td>rere</td>
-          <td>rere</td>
-        </tr>{' '}
-        <tr>
-          <td>rere</td>
-          <td>rere</td>
-        </tr>{' '}
-        <tr>
-          <td>rere</td>
-          <td>rere</td>
-        </tr>
-      </tbody>
-    </table>
+    <TableHead {...restProps}>
+      <Tr>
+        {columns.map(column => (
+          <Th key={column.key} onClick={() => handleSort(column.key)}>
+            {column.title}
+            {sort && sort.key === column.key && <span>{sort.direction === 'asc' ? '▲' : '▼'}</span>}
+          </Th>
+        ))}
+      </Tr>
+    </TableHead>
   )
 }
