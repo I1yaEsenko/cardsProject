@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
@@ -50,7 +51,12 @@ export const ForgotForm = ({ onSubmit }: PropsType) => {
             Did you remember your password?
           </Typography>
 
-          <Typography className={s.link} variant={TypographyVariant.link2}>
+          <Typography
+            as={Link}
+            className={s.link}
+            to={'/sign-in'}
+            variant={TypographyVariant.link2}
+          >
             Try logging in
           </Typography>
         </div>

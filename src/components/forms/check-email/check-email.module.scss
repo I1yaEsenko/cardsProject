@@ -1,0 +1,29 @@
+.card {
+  width: 420px;
+  margin: auto;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding-top: 27px;
+  padding-bottom: 65px;
+
+  .img {
+    padding-bottom: 19px;
+    text-align: center;
+  }
+
+  .text {
+    color: var(--color-light-900);
+    text-align: center;
+  }
+}

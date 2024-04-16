@@ -10,7 +10,7 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const FotFormStory: Story = {
+export const Forgot: Story = {
   args: {
     onSubmit: data => console.log(data),
   },

@@ -1,26 +1,33 @@
 .checkboxRoot {
-  background-color: inherit;
-  width: 18px;
-  height: 18px;
-  border-radius: 2px;
-  border: 2px solid var(--color-light-900);
+  cursor: pointer;
+
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  cursor: pointer;
+
+  width: 18px;
+  height: 18px;
+
+  background-color: inherit;
+  border: 2px solid var(--color-light-900);
+  border-radius: 2px;
 
   &::before {
-    z-index: -1;
     content: '';
+
     position: absolute;
+    z-index: -1;
+
     width: 36px;
     height: 36px;
+
     border-radius: 50%;
   }
 
   &:focus-visible {
-    outline: none;
+    outline: 1px solid var(--color-info-700);
 
     &::before {
       background-color: var(--color-dark-100);
@@ -59,9 +66,10 @@
 .label {
   cursor: pointer;
   user-select: none;
+
   display: flex;
-  align-items: center;
   gap: 11px;
+  align-items: center;
 
   &:active {
     .checkboxRoot::before {
