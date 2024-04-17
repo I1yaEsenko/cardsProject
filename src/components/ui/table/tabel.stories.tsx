@@ -1,15 +1,7 @@
 import { useMemo, useState } from 'react'
 
-import {
-  Sort,
-  Table,
-  TableBody,
-  TableHead,
-  TableHeader,
-  Td,
-  Th,
-  Tr,
-} from '@/components/ui/table/tabel'
+import { SortType } from '@/components/types'
+import { Table, TableBody, TableHead, TableHeader, Td, Th, Tr } from '@/components/ui/table/tabel'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
@@ -121,7 +113,7 @@ const columns = [
 
 export const WithSorts: Story = {
   render: () => {
-    const [sort, setSort] = useState<Sort>(null)
+    const [sort, setSort] = useState<SortType>(null)
     const sortedString = useMemo(() => {
       if (!sort) {
         return null

@@ -1,5 +1,6 @@
 import { ComponentPropsWithoutRef, ElementRef, FC, forwardRef } from 'react'
 
+import { ColumnType, SortType } from '@/components/types'
 import { clsx } from 'clsx'
 
 import s from './table.module.scss'
@@ -76,20 +77,12 @@ export const Tr = forwardRef<ElementRef<'tr'>, ComponentPropsWithoutRef<'tr'>>(
   }
 )
 
-export type Column = {
-  key: string
-  title: string
-}
-export type Sort = {
-  direction: 'asc' | 'desc'
-  key: string
-} | null
 export const TableHeader: FC<
   Omit<
     ComponentPropsWithoutRef<'thead'> & {
-      columns: Column[]
-      onSort?: (sort: Sort) => void
-      sort?: Sort
+      columns: ColumnType[]
+      onSort?: (sort: SortType) => void
+      sort?: SortType
     },
     'children'
   >
