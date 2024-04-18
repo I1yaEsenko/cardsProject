@@ -8,11 +8,11 @@ interface PaginationParams {
 }
 
 export const usePagination = ({
-                                currentPage,
-                                pageSize,
-                                siblingCount,
-                                totalCount,
-                              }: PaginationParams) => {
+  currentPage,
+  pageSize,
+  siblingCount,
+  totalCount,
+}: PaginationParams) => {
   return useMemo(() => {
     const totalPageCount = Math.ceil(totalCount / pageSize)
 

@@ -1,12 +1,11 @@
+import ArrowDown from '@/components/icons/ArrowDown'
+import { usePagination } from '@/components/ui/pagination/usePagination'
+import { SelectProps, Selector } from '@/components/ui/selector'
+import { Typography } from '@/components/ui/typography'
+import { TypographyVariant } from '@/components/ui/typography/enum'
 import cn from 'classnames'
 
 import s from './pagination.module.scss'
-import { usePagination } from "@/components/ui/pagination/usePagination";
-import { Typography } from "@/components/ui/typography";
-import { TypographyVariant } from "@/components/ui/typography/enum";
-import { Selector, SelectProps } from "@/components/ui/selector";
-import ArrowDown from "@/components/icons/ArrowDown";
-
 
 type Props = {
   currentPage: number
@@ -17,14 +16,14 @@ type Props = {
 } & Omit<SelectProps, 'fullWidth' | 'label' | 'pagination'>
 
 export const Pagination = ({
-                             currentPage,
-                             onChangePage,
-                             pageSize,
-                             siblingCount = 1,
-                             totalCount,
-                             ...restProps
-                           }: Props) => {
-
+  currentPage,
+  onChangePage,
+  pageSize,
+  siblingCount = 1,
+  totalCount,
+  ...restProps,
+  onValueChange,
+}: Props) => {
   const paginationRange = usePagination({
     currentPage,
     pageSize,
@@ -34,11 +33,10 @@ export const Pagination = ({
 
   if (currentPage === 0 || paginationRange.length < 2) {
     return (
-      <Typography as="div" className={s.selectContainer} variant={TypographyVariant.body2}>
-        {'Show'}
-
+      <Typography as={'div'} className={s.selectContainer} variant={TypographyVariant.body2}>
+        {'Показать'}
         <Selector {...restProps} />
-        {'on page'}
+        {'на странице'}
       </Typography>
     )
   }
@@ -55,14 +53,14 @@ export const Pagination = ({
   const isLastPage = currentPage === paginationRange[paginationRange.length - 1]
 
   return (
-    <div className={cn(s.container)}> // className
+    <div className={cn(s.container)}>
       <div className={s.pagination}>
         <button
           className={cn(s.item, { [s.disabled]: isFirstPage })}
           disabled={isFirstPage}
           onClick={handleClickPrev}
         >
-          <ArrowDown className={s.left} />
+          <ArrowDown className={s.right} />
         </button>
         {paginationRange.map((num, i) => {
           if (num === 0) {
@@ -82,7 +80,7 @@ export const Pagination = ({
               key={i}
               onClick={handleChangePage}
             >
-              <Typography as="span" variant={TypographyVariant.body2}>
+              <Typography as={'span'} variant={TypographyVariant.body2}>
                 {num}
               </Typography>
             </button>
@@ -93,13 +91,13 @@ export const Pagination = ({
           disabled={isLastPage}
           onClick={handleClickNext}
         >
-          <ArrowDown className={s.right} />
+          <ArrowDown className={s.left} />
         </button>
       </div>
-      <Typography as="div" className={s.selectContainer} variant={TypographyVariant.body2}>
-        {'Show'}
+      <Typography as={'div'} className={s.selectContainer} variant={TypographyVariant.body2}>
+        {'Показать'}
         <Selector {...restProps} />
-        {'on page'}
+        {'на странице'}
       </Typography>
     </div>
   )

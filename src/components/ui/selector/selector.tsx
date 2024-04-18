@@ -5,6 +5,7 @@ import { TypographyVariant } from '@/components/ui/typography/enum'
 import { clsx } from 'clsx'
 
 import s from './selector.module.scss'
+
 type OptionsProps = {
   title: string
   value: string
@@ -14,6 +15,7 @@ export type SelectProps = {
   disabled?: boolean
   label?: string
   large?: boolean
+  onValueChange?: (value: ((prevState: string) => string) | string) => void
   options: OptionsProps[]
   setForm?: (value: string) => void
 }
