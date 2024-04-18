@@ -5,11 +5,12 @@ import { TypographyVariant } from '@/components/ui/typography/enum'
 import { clsx } from 'clsx'
 
 import s from './selector.module.scss'
+
 type OptionsProps = {
   title: string
   value: string
 }
-type SelectProps = {
+export type SelectProps = {
   defaultValue?: string
   disabled?: boolean
   label?: string
