@@ -1,5 +1,7 @@
 import { ComponentPropsWithoutRef, ElementRef, FC, forwardRef } from 'react'
 
+import ArrowUp from '@/assets/icons/arrow-Up.svg'
+import ArrowDown from '@/assets/icons/arrow-down.svg'
 import { ColumnType, SortType } from '@/components/types'
 import { clsx } from 'clsx'
 
@@ -109,12 +111,24 @@ export const TableHeader: FC<
   return (
     <TableHead {...restProps}>
       <Tr>
-        {columns.map(column => (
-          <Th key={column.key} onClick={() => handleSort(column.key)}>
-            {column.title}
-            {sort && sort.key === column.key && <span>{sort.direction === 'asc' ? '▲' : '▼'}</span>}
-          </Th>
-        ))}
+        {columns.map(column =>
+          column.key !== 'actions' ? (
+            <Th key={column.key} onClick={() => handleSort(column.key)}>
+              {column.title}
+              {sort && sort.key === column.key && (
+                <span>
+                  {sort.direction === 'asc' ? (
+                    <img alt={'Arrow-Down'} className={s.img} src={ArrowUp} />
+                  ) : (
+                    <img alt={'Arrow-Down'} className={s.img} src={ArrowDown} />
+                  )}
+                </span>
+              )}
+            </Th>
+          ) : (
+            <Th key={column.key}>{column.title}</Th>
+          )
+        )}
       </Tr>
     </TableHead>
   )

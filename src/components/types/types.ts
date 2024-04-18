@@ -13,3 +13,9 @@ export type CardType = {
   title: string
   updated: string
 }
+export type FriendsCards = {
+  answer: string
+  grade: number
+  question: string
+  updated: string
+}
