@@ -100,9 +100,9 @@ export const Controlled: Story = {
         <Pagination
           currentPage={current}
           onChangePage={setPage}
-          onValueChange={setView}
           options={options}
           pageSize={10}
+          setForm={setView}
           totalCount={200}
         />
       </div>

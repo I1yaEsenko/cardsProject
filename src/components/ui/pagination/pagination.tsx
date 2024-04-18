@@ -21,8 +21,7 @@ export const Pagination = ({
   pageSize,
   siblingCount = 1,
   totalCount,
-  ...restProps,
-  onValueChange,
+  ...restProps
 }: Props) => {
   const paginationRange = usePagination({
     currentPage,

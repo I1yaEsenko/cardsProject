@@ -15,7 +15,6 @@ export type SelectProps = {
   disabled?: boolean
   label?: string
   large?: boolean
-  onValueChange?: (value: ((prevState: string) => string) | string) => void
   options: OptionsProps[]
   setForm?: (value: string) => void
 }
