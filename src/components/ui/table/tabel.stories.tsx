@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react'
 import { SortType } from '@/components/types'
 import { FriendsCards } from '@/components/types/types'
 import { DeskList } from '@/components/ui/table/desk-list'
-import FriendsDecks from '@/components/ui/table/friends-deck/friends-decks'
+import { FriendsDecks } from '@/components/ui/table/friends-deck/friends-decks'
 import { Table, TableBody, TableHead, TableHeader, Td, Th, Tr } from '@/components/ui/table/tabel'
 import { Meta, StoryObj } from '@storybook/react'
 

@@ -2,7 +2,11 @@ import { ComponentPropsWithoutRef, ElementRef, FC, forwardRef } from 'react'
 
 import ArrowUp from '@/assets/icons/arrow-Up.svg'
 import ArrowDown from '@/assets/icons/arrow-down.svg'
+import Pen from '@/assets/icons/pen.svg'
+import Player from '@/assets/icons/player.svg'
+import Trash from '@/assets/icons/trash.svg'
 import { ColumnType, SortType } from '@/components/types'
+import { Button } from '@/components/ui/button'
 import { clsx } from 'clsx'
 
 import s from './table.module.scss'
@@ -49,6 +53,28 @@ export const Td = forwardRef<ElementRef<'td'>, ComponentPropsWithoutRef<'td'>>(
       <td className={classes.td} {...rest} ref={ref}>
         {children}
       </td>
+    )
+  }
+)
+export const NavMenuTd = forwardRef<ElementRef<'div'>, ComponentPropsWithoutRef<'div'>>(
+  ({ ...restProps }, ref) => {
+    const classes = {
+      navMenu: s.tdNavMenu,
+      navMenuButton: s.tdNavMenuButton,
+    }
+
+    return (
+      <div className={classes.navMenu} {...restProps} ref={ref}>
+        <Button className={classes.navMenuButton}>
+          <img onClick={() => {}} src={Player} />
+        </Button>
+        <Button className={classes.navMenuButton}>
+          <img src={Pen} />
+        </Button>
+        <Button className={classes.navMenuButton}>
+          <img src={Trash} />
+        </Button>
+      </div>
     )
   }
 )

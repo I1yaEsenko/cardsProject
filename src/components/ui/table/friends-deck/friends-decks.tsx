@@ -9,7 +9,7 @@ type DeskListType = {
   columns: ColumnType[]
 }
 
-const FriendsDecks = ({ card, columns }: DeskListType) => {
+export const FriendsDecks = ({ card, columns }: DeskListType) => {
   const [sort, setSort] = useState<SortType>(null)
   const sortedString = useMemo(() => {
     if (!sort) {
@@ -39,5 +39,3 @@ const FriendsDecks = ({ card, columns }: DeskListType) => {
     </Table>
   )
 }
-
-export default FriendsDecks
