@@ -1,5 +1,12 @@
 import { ComponentPropsWithoutRef, ElementRef, FC, forwardRef } from 'react'
 
+import ArrowUp from '@/assets/icons/arrow-Up.svg'
+import ArrowDown from '@/assets/icons/arrow-down.svg'
+import Pen from '@/assets/icons/pen.svg'
+import Player from '@/assets/icons/player.svg'
+import Trash from '@/assets/icons/trash.svg'
+import { ColumnType, SortType } from '@/components/types'
+import { Button } from '@/components/ui/button'
 import { clsx } from 'clsx'
 
 import s from './table.module.scss'
@@ -49,6 +56,28 @@ export const Td = forwardRef<ElementRef<'td'>, ComponentPropsWithoutRef<'td'>>(
     )
   }
 )
+export const NavMenuTd = forwardRef<ElementRef<'div'>, ComponentPropsWithoutRef<'div'>>(
+  ({ ...restProps }, ref) => {
+    const classes = {
+      navMenu: s.tdNavMenu,
+      navMenuButton: s.tdNavMenuButton,
+    }
+
+    return (
+      <div className={classes.navMenu} {...restProps} ref={ref}>
+        <Button className={classes.navMenuButton}>
+          <img onClick={() => {}} src={Player} />
+        </Button>
+        <Button className={classes.navMenuButton}>
+          <img src={Pen} />
+        </Button>
+        <Button className={classes.navMenuButton}>
+          <img src={Trash} />
+        </Button>
+      </div>
+    )
+  }
+)
 export const Th = forwardRef<ElementRef<'th'>, ComponentPropsWithoutRef<'th'>>(
   ({ children, className, ...rest }, ref) => {
     const classes = {
@@ -76,20 +105,12 @@ export const Tr = forwardRef<ElementRef<'tr'>, ComponentPropsWithoutRef<'tr'>>(
   }
 )
 
-export type Column = {
-  key: string
-  title: string
-}
-export type Sort = {
-  direction: 'asc' | 'desc'
-  key: string
-} | null
 export const TableHeader: FC<
   Omit<
     ComponentPropsWithoutRef<'thead'> & {
-      columns: Column[]
-      onSort?: (sort: Sort) => void
-      sort?: Sort
+      columns: ColumnType[]
+      onSort?: (sort: SortType) => void
+      sort?: SortType
     },
     'children'
   >
@@ -116,12 +137,24 @@ export const TableHeader: FC<
   return (
     <TableHead {...restProps}>
       <Tr>
-        {columns.map(column => (
-          <Th key={column.key} onClick={() => handleSort(column.key)}>
-            {column.title}
-            {sort && sort.key === column.key && <span>{sort.direction === 'asc' ? '▲' : '▼'}</span>}
-          </Th>
-        ))}
+        {columns.map(column =>
+          column.key !== 'actions' ? (
+            <Th key={column.key} onClick={() => handleSort(column.key)}>
+              {column.title}
+              {sort && sort.key === column.key && (
+                <span>
+                  {sort.direction === 'asc' ? (
+                    <img alt={'Arrow-Down'} className={s.img} src={ArrowUp} />
+                  ) : (
+                    <img alt={'Arrow-Down'} className={s.img} src={ArrowDown} />
+                  )}
+                </span>
+              )}
+            </Th>
+          ) : (
+            <Th key={column.key}>{column.title}</Th>
+          )
+        )}
       </Tr>
     </TableHead>
   )

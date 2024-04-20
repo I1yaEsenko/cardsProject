@@ -1,15 +1,10 @@
 import { useMemo, useState } from 'react'
 
-import {
-  Sort,
-  Table,
-  TableBody,
-  TableHead,
-  TableHeader,
-  Td,
-  Th,
-  Tr,
-} from '@/components/ui/table/tabel'
+import { SortType } from '@/components/types'
+import { FriendsCards } from '@/components/types/types'
+import { DeskList } from '@/components/ui/table/desk-list'
+import { FriendsDecks } from '@/components/ui/table/friends-deck/friends-decks'
+import { Table, TableBody, TableHead, TableHeader, Td, Th, Tr } from '@/components/ui/table/tabel'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
@@ -117,11 +112,59 @@ const columns = [
     key: 'createdBy',
     title: 'Created by',
   },
+  {
+    key: 'actions',
+    title: '',
+  },
+]
+const columnFriends = [
+  {
+    key: 'question',
+    title: 'Question',
+  },
+  {
+    key: 'answer',
+    title: 'Answer',
+  },
+  {
+    key: 'updated',
+    title: 'Last Updated',
+  },
+  {
+    key: 'grade',
+    title: 'Grade',
+  },
+]
+const dataFr: FriendsCards[] = [
+  {
+    answer: 'How "This" works in JavaScript?',
+    grade: 5,
+    question: 'This is how "This" works in JavaScript',
+    updated: '18.02.1931',
+  },
+  {
+    answer: 'How "This" works in JavaScript?',
+    grade: 5,
+    question: 'This is how "This" works in JavaScript',
+    updated: '18.02.1931',
+  },
+  {
+    answer: 'How "This" works in JavaScript?',
+    grade: 5,
+    question: 'This is how "This" works in JavaScript',
+    updated: '18.02.1931',
+  },
+  {
+    answer: 'How "This" works in JavaScript?',
+    grade: 5,
+    question: 'This is how "This" works in JavaScript',
+    updated: '18.02.1931',
+  },
 ]
 
-export const WithSorts: Story = {
+export const WithSort: Story = {
   render: () => {
-    const [sort, setSort] = useState<Sort>(null)
+    const [sort, setSort] = useState<SortType>(null)
     const sortedString = useMemo(() => {
       if (!sort) {
         return null
@@ -135,7 +178,7 @@ export const WithSorts: Story = {
     console.log(sort)
 
     return (
-      <>
+      <Table>
         <TableHeader columns={columns} onSort={setSort} sort={sort} />
         <TableBody>
           {data.map(item => (
@@ -144,10 +187,21 @@ export const WithSorts: Story = {
               <Td>{item.cardsCount}</Td>
               <Td>{item.updated}</Td>
               <Td>{item.createdBy}</Td>
+              <Td>ellrlle</Td>
             </Tr>
           ))}
         </TableBody>
-      </>
+      </Table>
     )
+  },
+}
+export const DeskLists: Story = {
+  args: {
+    children: <DeskList card={data} columns={columns} />,
+  },
+}
+export const Friends: Story = {
+  args: {
+    children: <FriendsDecks card={dataFr} columns={columnFriends} />,
   },
 }
