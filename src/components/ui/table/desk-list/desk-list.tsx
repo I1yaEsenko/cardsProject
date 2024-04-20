@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react'
 import { CardType, ColumnType, SortType } from '@/components/types'
 import { NavMenuTd, Table, TableBody, TableHeader, Td, Tr } from '@/components/ui/table'
 type DeskListType = {
-  card: CardType[]
+  card: CardType[] | undefined
   columns: ColumnType[]
 }
 
@@ -25,11 +25,11 @@ export const DeskList = ({ card, columns }: DeskListType) => {
     <Table>
       <TableHeader columns={columns} onSort={setSort} sort={sort} />
       <TableBody>
-        {card.map(item => (
-          <Tr key={item.title}>
-            <Td>{item.title}</Td>
-            <Td>{item.cardsCount}</Td>
-            <Td>{item.updated}</Td>
+        {card?.map(item => (
+          <Tr key={item.id}>
+            <Td>{item.name}</Td>
+            <Td>{item.cards}</Td>
+            <Td>{item.lastUpdated}</Td>
             <Td>{item.createdBy}</Td>
             <Td>
               <NavMenuTd />

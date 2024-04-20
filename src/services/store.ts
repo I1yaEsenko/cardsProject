@@ -1,4 +1,4 @@
-import { baseApi } from '@/service/base-api'
+import { baseApi } from '@/services/base-api'
 import { configureStore } from '@reduxjs/toolkit'
 
 export const store = configureStore({

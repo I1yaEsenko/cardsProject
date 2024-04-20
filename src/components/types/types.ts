@@ -1,3 +1,5 @@
+import { components, operations } from '@/services/schema'
+
 export type ColumnType = {
   key: string
   title: string
@@ -8,10 +10,11 @@ export type SortType = {
 } | null
 
 export type CardType = {
-  cardsCount: number
+  cards: number
   createdBy: string
-  title: string
-  updated: string
+  id: string
+  lastUpdated: string
+  name: string
 }
 export type FriendsCards = {
   answer: string
@@ -19,3 +22,5 @@ export type FriendsCards = {
   question: string
   updated: string
 }
+export type GetDecksResponse = components['schemas']['PaginatedDecks']
+export type GetDecksArgs = operations['DecksController_findAllV2']['parameters']['query']
