@@ -8,7 +8,7 @@ import {
 } from 'react-router-dom'
 
 import { Decks } from '@/pages/decks'
-import { useGetDecksQuery } from '@/services/base-api'
+import { useGetDecksQuery } from '@/services/decks/decks.service'
 
 const publicRoutes: RouteObject[] = [
   {

@@ -10,17 +10,12 @@ const Switcher = () => {
       <Tabs.List aria-label={'Manage your account'} className={s.tabsList}>
         <Tabs.Trigger className={s.tabsTrigger} value={'tab1'}>
           <Typography className={s.tabsText} variant={TypographyVariant.body1}>
-            Switcher
+            My Cards
           </Typography>
         </Tabs.Trigger>
         <Tabs.Trigger className={s.tabsTrigger} value={'tab1'}>
           <Typography className={s.tabsText} variant={TypographyVariant.body1}>
-            Switcher
-          </Typography>
-        </Tabs.Trigger>
-        <Tabs.Trigger className={s.tabsTrigger} disabled value={'tab1'}>
-          <Typography className={s.tabsText} variant={TypographyVariant.body1}>
-            Switcher
+            All Cards
           </Typography>
         </Tabs.Trigger>
       </Tabs.List>
