@@ -1,14 +1,28 @@
 import { useMemo, useState } from 'react'
 
+import Pen from '@/assets/icons/pen.svg'
+import Player from '@/assets/icons/player.svg'
+import Trash from '@/assets/icons/trash.svg'
 import { CardType, ColumnType, SortType } from '@/components/types'
-import { NavMenuTd, Table, TableBody, TableHeader, Td, Tr } from '@/components/ui/table'
+import { Button } from '@/components/ui/button'
+import { Table, TableBody, TableHeader, Td, Tr } from '@/components/ui/table'
+
+import s from '@/components/ui/table/table.module.scss'
 type DeskListType = {
   card: CardType[] | undefined
   columns: ColumnType[]
   deleteHandler: (id: string) => void
+  editHandler: (id: string) => void
+  playHandler: (id: string) => void
 }
 
-export const DeskList = ({ card, columns, deleteHandler }: DeskListType) => {
+export const DeskList = ({
+  card,
+  columns,
+  deleteHandler,
+  editHandler,
+  playHandler,
+}: DeskListType) => {
   const [sort, setSort] = useState<SortType>(null)
   const sortedString = useMemo(() => {
     if (!sort) {
@@ -20,9 +34,13 @@ export const DeskList = ({ card, columns, deleteHandler }: DeskListType) => {
   }, [sort])
 
   console.log(sortedString)
-  console.log(sort)
+  // console.log(sort)
   const deleteOnclick = (id: string) => {
     deleteHandler(id)
+  }
+  const classes = {
+    navMenu: s.tdNavMenu,
+    navMenuButton: s.tdNavMenuButton,
   }
 
   return (
@@ -36,8 +54,15 @@ export const DeskList = ({ card, columns, deleteHandler }: DeskListType) => {
             <Td>{item.lastUpdated}</Td>
             <Td>{item.createdBy}</Td>
             <Td>
-              <button onClick={() => deleteOnclick(item.id)}>x</button>
-              <NavMenuTd />
+              <Button className={classes.navMenuButton} onClick={() => playHandler(item.id)}>
+                <img src={Player} />
+              </Button>
+              <Button className={classes.navMenuButton} onClick={() => editHandler(item.id)}>
+                <img src={Pen} />
+              </Button>
+              <Button className={classes.navMenuButton} onClick={() => deleteOnclick(item.id)}>
+                <img src={Trash} />
+              </Button>
             </Td>
           </Tr>
         ))}
