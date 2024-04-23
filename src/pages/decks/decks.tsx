@@ -1,22 +1,15 @@
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
-import { ControlledCheckbox } from '@/components/ui/controlled/controlled-checkbox'
-import { ControlledInput } from '@/components/ui/controlled/controlled-input'
 import { Input } from '@/components/ui/input'
-import { Pagination } from '@/components/ui/pagination'
 import { Slider } from '@/components/ui/slider'
 import { DeskList } from '@/components/ui/table/desk-list'
 import Tabs from '@/components/ui/tabs/tabs'
 import { Typography } from '@/components/ui/typography'
 import { TypographyVariant } from '@/components/ui/typography/enum'
-import {
-  useCreateDeckMutation,
-  useDeleteDeckMutation,
-  useGetDecksQuery,
-} from '@/services/decks/decks.service'
+import { CreateDecks } from '@/pages/decks/createDecks'
+import { PaginationContainer } from '@/pages/decks/paginationContainer'
+import { useDeleteDeckMutation, useGetDecksQuery } from '@/services/decks/decks.service'
 
 const columns = [
   {
@@ -42,17 +35,19 @@ const columns = [
 ]
 
 export const Decks = () => {
-  const { control, handleSubmit } = useForm()
+  const [view, setView] = useState<number>(5)
+
   const [search, setSearch] = useState<string>('')
   const [currentPage, setCurrentPage] = useState<number>(1)
   const { data, isLoading } = useGetDecksQuery({
     currentPage,
+    itemsPerPage: Number(view),
     name: search,
+    // orderBy: 'author.name-',
   })
-  const [createDeck, { isLoading: isDeckBeingCreate }] = useCreateDeckMutation()
+
   const [deleteDeck] = useDeleteDeckMutation()
 
-  console.log(data)
   if (isLoading) {
     return <h1>loading</h1>
   }
@@ -71,20 +66,24 @@ export const Decks = () => {
   const deleteHandler = (id: string) => {
     deleteDeck({ id })
   }
+  const playHandler = (id: string) => {
+    console.log('playHandler: ' + id)
+  }
+  const editHandler = (id: string) => {
+    console.log('editHandler: ' + id)
+  }
+
+  const setPage = (page: number) => {
+    setCurrentPage(page)
+  }
+  const setForm = (value: number) => {
+    setView(value)
+  }
 
   return (
     <div style={{ margin: 'auto', width: '1006px' }}>
-      <form
-        onSubmit={handleSubmit(data => {
-          createDeck(data as any)
-        })}
-        style={{ border: '2px solid red', margin: '5px' }}
-      >
-        <ControlledInput control={control} name={'name'} />
-        <ControlledCheckbox control={control} label={'Private Decks'} name={'isPrivate'} />
-        <Button disabled={isDeckBeingCreate}>Create Deck</Button>
-      </form>
-      <div style={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
+      <CreateDecks />
+      <div>
         <Typography variant={TypographyVariant.h1}>Decks list</Typography>
         <Button>Add New Deck</Button>
       </div>
@@ -94,15 +93,19 @@ export const Decks = () => {
         <Slider />
         <Button variant={'secondary'}>Clear Filter</Button>
       </div>
-      <DeskList card={mapData} columns={columns} deleteHandler={deleteHandler} />
-      <Link to={'/2'}>OtherPage</Link>
-
-      <Pagination
+      <DeskList
+        card={mapData}
+        columns={columns}
+        deleteHandler={deleteHandler}
+        editHandler={editHandler}
+        playHandler={playHandler}
+      />
+      {/*<Link to={'/2'}>OtherPage</Link>*/}
+      <PaginationContainer
         currentPage={currentPage | 1}
-        onChangePage={setCurrentPage}
-        options={data?.items}
-        pageSize={data?.pagination.itemsPerPage}
-        totalCount={data?.pagination.totalPages}
+        data={data?.pagination}
+        setCurrentPage={setPage}
+        setForm={setForm}
       />
     </div>
   )
