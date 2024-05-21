@@ -1,4 +1,4 @@
-import Switcher from '@/components/ui/tabs/tabs'
+import { Switcher } from '@/components/ui/tabs/tabs'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {

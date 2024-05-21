@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Slider } from '@/components/ui/slider'
 import { DeskList } from '@/components/ui/table/desk-list'
-import Tabs from '@/components/ui/tabs/tabs'
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs/tabs'
 import { Typography } from '@/components/ui/typography'
 import { TypographyVariant } from '@/components/ui/typography/enum'
 import { CreateDecks } from '@/pages/decks/createDecks'
@@ -89,7 +89,13 @@ export const Decks = () => {
       </div>
       <div className={''}>
         <Input onValueChange={setSearch} />
-        <Tabs />
+        tabs
+        <Tabs asChild>
+          <TabsList>
+            <TabsTrigger value={'my'}>My decks</TabsTrigger>
+            <TabsTrigger value={'all'}>All decks</TabsTrigger>
+          </TabsList>
+        </Tabs>
         <Slider />
         <Button variant={'secondary'}>Clear Filter</Button>
       </div>
@@ -100,9 +106,9 @@ export const Decks = () => {
         editHandler={editHandler}
         playHandler={playHandler}
       />
-      {/*<Link to={'/2'}>OtherPage</Link>*/}
+
       <PaginationContainer
-        currentPage={currentPage | 1}
+        currentPage={1}
         data={data?.pagination}
         setCurrentPage={setPage}
         setForm={setForm}
