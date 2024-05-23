@@ -1,6 +1,6 @@
 import {
   CreateDeckArgs,
-  DeleteDeckArgs,
+  // DeleteDeckArgs,
   GetDecksArgs,
   GetDecksResponse,
 } from '@/components/types/types'
@@ -17,7 +17,7 @@ export const decksService = baseApi.injectEndpoints({
           url: '/v1/decks',
         }),
       }),
-      deleteDeck: builder.mutation<void, DeleteDeckArgs>({
+      deleteDeck: builder.mutation<void, any>({
         invalidatesTags: ['Decks'],
         query: arg => ({
           method: 'DELETE',

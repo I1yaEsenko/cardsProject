@@ -8,7 +8,7 @@ import { TypographyVariant } from '@/components/ui/typography/enum'
 
 import s from './check-email.module.scss'
 
-const CheckEmail = () => {
+export const CheckEmail = () => {
   return (
     <Card className={s.card}>
       <div className={s.wrapper}>
@@ -26,5 +26,3 @@ const CheckEmail = () => {
     </Card>
   )
 }
-
-export default CheckEmail

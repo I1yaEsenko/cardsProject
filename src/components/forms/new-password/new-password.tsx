@@ -18,7 +18,7 @@ type FormType = z.infer<typeof newPasswordSchema>
 type PropsType = {
   onSubmit: (data: FormType) => void
 }
-const NewPassword = ({ onSubmit }: PropsType) => {
+export const NewPassword = ({ onSubmit }: PropsType) => {
   const { control, handleSubmit } = useForm<FormType>({ resolver: zodResolver(newPasswordSchema) })
   const onSubmitHandler = (data: FormType) => {
     onSubmit(data)
@@ -48,5 +48,3 @@ const NewPassword = ({ onSubmit }: PropsType) => {
     </Card>
   )
 }
-
-export default NewPassword

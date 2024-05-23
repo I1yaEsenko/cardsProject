@@ -1,5 +1,7 @@
-import CheckEmail from '@/components/forms/check-email/check-email'
+// import CheckEmail from '@/components/forms/check-email/check-email'
+import { CheckEmail } from '@/components/forms/check-email/check-email'
 import { Meta, StoryObj } from '@storybook/react'
+// import {CheckEmail} from "@/components/forms/check-email/check-email";
 
 const meta = {
   component: CheckEmail,
