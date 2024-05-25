@@ -3,14 +3,19 @@
 
   cursor: pointer;
 
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+
   box-sizing: border-box;
-  padding: 0.375rem 1.75rem;
 
   font-family: inherit;
-  font-size: var(--font-size-s);
+  font-size: var(--font-size-14-s);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-m);
   color: inherit;
+  text-align: center;
 
   border-radius: 4px;
   outline: none;
@@ -22,8 +27,7 @@
   }
 }
 
-.primary,
-.link {
+.primary {
   composes: button;
   padding: 6px 28px;
   background-color: var(--color-accent-500);
@@ -74,10 +78,15 @@
 
   &:focus {
     background-color: var(--color-dark-300);
-
-    //border: 2px solid var(--color-info-700);
     outline: 2px solid var(--color-info-700);
   }
+}
+
+.link {
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-m);
+  color: var(--color-accent-500);
+  text-decoration-line: underline;
 }
 
 .fullWidth {

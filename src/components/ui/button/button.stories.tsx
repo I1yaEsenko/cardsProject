@@ -17,6 +17,7 @@ export const Primary: Story = {
   args: {
     children: 'Button primary',
     disabled: false,
+    onClick: () => console.log('click'),
     variant: 'primary',
   },
 }
@@ -25,7 +26,7 @@ export const PrimaryWithIcon: Story = {
     children: (
       <>
         <LogOut height={16} width={16} />
-        Sign out
+        Button primary
       </>
     ),
     disabled: false,
@@ -55,7 +56,7 @@ export const AsLink: Story = {
     as: 'a',
     children: 'Link that looks like a button',
 
-    href: 'https://google.com',
-    variant: 'link',
+    href: 'http://localhost:6006/?path=/docs/components-button--docs',
+    variant: 'primary',
   },
 }
