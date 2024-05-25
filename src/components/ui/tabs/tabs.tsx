@@ -1,30 +1,10 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
-import { Typography } from '@/components/ui/typography'
-import { TypographyVariant } from '@/components/ui/typography/enum'
 import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { clsx } from 'clsx'
 
 import s from './tabs.module.scss'
 
-export const Switcher = () => {
-  return (
-    <TabsPrimitive.Root className={s.tabsRoot} defaultValue={'tab1'}>
-      <TabsPrimitive.List aria-label={'Manage your account'} className={s.tabsList}>
-        <TabsPrimitive.Trigger className={s.tabsTrigger} value={'tab1'}>
-          <Typography className={s.tabsText} variant={TypographyVariant.body1}>
-            My Cards
-          </Typography>
-        </TabsPrimitive.Trigger>
-        <TabsPrimitive.Trigger className={s.tabsTrigger} value={'tab2'}>
-          <Typography className={s.tabsText} variant={TypographyVariant.body1}>
-            All Cards
-          </Typography>
-        </TabsPrimitive.Trigger>
-      </TabsPrimitive.List>
-    </TabsPrimitive.Root>
-  )
-}
 const Tabs = TabsPrimitive.Root
 
 const TabsList = forwardRef<
