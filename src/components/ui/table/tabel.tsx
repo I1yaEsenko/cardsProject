@@ -137,6 +137,8 @@ export const TableHeader: FC<
     })
   }
 
+  console.log(sort)
+
   return (
     <TableHead {...restProps}>
       <Tr>
@@ -153,6 +155,7 @@ export const TableHeader: FC<
                   )}
                 </span>
               )}
+              {onSort && sort?.key !== column.key && <span className={s.img}></span>}
             </Th>
           ) : (
             <Th key={column.key}>{column.title}</Th>
