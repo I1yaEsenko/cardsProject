@@ -17,9 +17,12 @@
 }
 
 .dropdownMenuItem {
+  cursor: pointer;
+
   display: flex;
   align-items: center;
   justify-content: flex-start;
+
   padding: 12px 0;
 
   &:focus-visible {
@@ -41,6 +44,7 @@
 }
 
 .dropdownArrow {
-  top: 1px;
+  position: relative;
+  bottom: 1.5px;
   transform: rotate(180deg);
 }

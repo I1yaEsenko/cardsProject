@@ -1,6 +1,6 @@
 import Outside from '@/assets/icons/outside'
 import Userpic from '@/assets/icons/userpic'
-import Dropdown from '@/components/ui/dropdown/dropdown'
+import { Dropdown } from '@/components/ui/dropdown/dropdown'
 import DropdownLogin from '@/components/ui/dropdown/dropdownLogin/dropdownLogin'
 import DropdownUser from '@/components/ui/dropdown/dropdownUser/dropdownUser'
 import { Meta, StoryObj } from '@storybook/react'

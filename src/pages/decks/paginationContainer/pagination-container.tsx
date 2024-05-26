@@ -27,7 +27,7 @@ export const PaginationContainer = ({ currentPage, data, setCurrentPage, setForm
       currentPage={currentPage | 1}
       onChangePage={setCurrentPage}
       options={options}
-      pageSize={data.itemsPerPage}
+      pageSize={1}
       setForm={setView}
       totalCount={data.totalPages}
     />

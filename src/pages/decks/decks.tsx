@@ -10,7 +10,6 @@ import { TypographyVariant } from '@/components/ui/typography/enum'
 import { CreateDecks } from '@/pages/decks/createDecks'
 import { PaginationContainer } from '@/pages/decks/paginationContainer'
 import { useDeleteDeckMutation, useGetDecksQuery } from '@/services/decks/decks.service'
-
 const columns = [
   {
     key: 'name',
