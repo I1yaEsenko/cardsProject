@@ -1,50 +1,46 @@
-.dropdownMenuContent {
-  position: relative;
-  right: 0;
+.trigger {
+  background: transparent;
+}
 
+.content {
   padding: 12px;
-
   background-color: var(--color-dark-700);
   border: 1px solid var(--color-dark-500);
-  border-radius: 6px;
+  border-radius: 4px;
+
+  .contentItems {
+    > :first-child {
+      padding-top: 0;
+    }
+
+    > :last-child {
+      padding-bottom: 0;
+    }
+  }
 }
 
-.IconButton {
-  position: relative;
-  line-height: 0 !important;
-  background-color: transparent;
-  border: none;
-}
-
-.dropdownMenuItem {
+.item {
   cursor: pointer;
 
   display: flex;
+  gap: 6px;
   align-items: center;
-  justify-content: flex-start;
 
   padding: 12px 0;
 
-  &:focus-visible {
+  [data-highlighted] {
+    color: pink;
     outline: none;
+    transition: transform 0.5s;
   }
 
-  &:first-of-type {
-    padding-top: 0;
+  :focus-visible {
+    outline-color: transparent;
   }
 
-  &:last-of-type {
-    padding-bottom: 0;
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: #fff;
   }
-}
-
-.dropdownMenuItemSpan {
-  padding-right: 6px;
-  line-height: 0 !important;
-}
-
-.dropdownArrow {
-  position: relative;
-  bottom: 1.5px;
-  transform: rotate(180deg);
 }
