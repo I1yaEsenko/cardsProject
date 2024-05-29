@@ -6,6 +6,7 @@ import {
   DropdownContent,
   DropdownItem,
   DropdownRoot,
+  DropdownSeparator,
   DropdownTrigger,
 } from '@/components/ui/dropdown/dropdown'
 import { DropdownMenu } from '@radix-ui/react-dropdown-menu'
@@ -38,10 +39,12 @@ export const Test: Story = {
             <PlayCircleOutline />
             Learn
           </DropdownItem>
+          <DropdownSeparator />
           <DropdownItem>
             <Edit2Outline />
             Edit
           </DropdownItem>
+          <DropdownSeparator />
           <DropdownItem>
             <TrashOutline />
             Delete

@@ -1,12 +1,30 @@
 .trigger {
   background: transparent;
+  border: none;
 }
 
 .content {
+  position: relative;
+  z-index: 999;
+
+  margin: 10px;
   padding: 12px;
+
   background-color: var(--color-dark-700);
   border: 1px solid var(--color-dark-500);
   border-radius: 4px;
+
+  .arrow {
+    position: absolute;
+    bottom: 1px;
+
+    order: 1;
+
+    width: 16px;
+    height: 16px;
+
+    background-color: pink;
+  }
 
   .contentItems {
     > :first-child {
@@ -28,7 +46,7 @@
 
   padding: 12px 0;
 
-  [data-highlighted] {
+  &[data-highlighted] {
     color: pink;
     outline: none;
     transition: transform 0.5s;
@@ -43,4 +61,9 @@
     height: 16px;
     fill: #fff;
   }
+}
+
+.separator {
+  width: auto;
+  border: 1px solid var(--color-dark-500);
 }

@@ -25,16 +25,7 @@ const DropdownContent = forwardRef<
     <DropdownMenu.Content className={clsx(s.content, className)} ref={ref} side={side} {...rest}>
       <DropdownMenu.Arrow asChild className={s.dropdownArrow}>
         {/*<img alt={'userIcon'} src={img} />*/}
-        <svg
-          fill={'none'}
-          height={'10'}
-          viewBox={'0 0 16 10'}
-          width={'16'}
-          xmlns={'http://www.w3.org/2000/svg'}
-        >
-          <path d={'M0 8L16 8L8 0L0 8Z'} fill={'#333333'} />
-          <path d={'M0 10L16 10L8 2L0 10Z'} fill={'#171717'} />
-        </svg>
+        <div className={s.arrow}></div>
       </DropdownMenu.Arrow>
       <div className={s.contentItems}>{children}</div>
     </DropdownMenu.Content>
@@ -49,8 +40,8 @@ const DropdownItem = forwardRef<
 const DropdownSeparator = forwardRef<
   ElementRef<typeof DropdownMenu.Separator>,
   ComponentPropsWithoutRef<typeof DropdownMenu.Separator>
->(({ ...rest }, ref) => {
-  return <DropdownMenu.Separator {...rest} ref={ref} />
+>(({ className, ...rest }, ref) => {
+  return <DropdownMenu.Separator className={clsx(s.separator, className)} {...rest} ref={ref} />
 })
 
 export {
