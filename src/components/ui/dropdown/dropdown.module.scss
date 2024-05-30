@@ -7,7 +7,7 @@
   position: relative;
   z-index: 999;
 
-  margin: 10px;
+  margin: 8px;
   padding: 12px;
 
   background-color: var(--color-dark-700);
@@ -16,14 +16,16 @@
 
   .arrow {
     position: absolute;
-    bottom: 1px;
+    bottom: -5.1px;
+    transform: rotate(45deg);
 
-    order: 1;
+    width: 10px;
+    height: 10px;
 
-    width: 16px;
-    height: 16px;
-
-    background-color: pink;
+    background-color: var(--color-dark-700);
+    border: 1px solid var(--color-dark-500);
+    border-top: none;
+    border-left: none;
   }
 
   .contentItems {
