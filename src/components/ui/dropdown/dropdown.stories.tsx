@@ -11,8 +11,6 @@ import {
 } from '@/components/ui/dropdown/dropdown'
 import { DropdownMenu } from '@radix-ui/react-dropdown-menu'
 import { Meta, StoryObj } from '@storybook/react'
-
-// import DropdownRoot from '@/dropdown'
 const meta = {
   component: DropdownRoot,
   parameters: {

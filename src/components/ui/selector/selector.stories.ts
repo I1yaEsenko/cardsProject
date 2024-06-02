@@ -28,3 +28,13 @@ export const Primary: Story = {
     setForm: fn(),
   },
 }
+export const Second: Story = {
+  args: {
+    defaultValue: options[2].value,
+    disabled: false,
+    label: 'kfkf',
+    large: true,
+    options,
+    setForm: fn(),
+  },
+}
