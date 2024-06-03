@@ -1,57 +1,41 @@
-.wrapper {
-  margin-left: auto;
+.card {
+  width: 100%;
+  max-width: 420px;
   margin-right: auto;
-  width: 420px;
+  margin-left: auto;
+}
 
-  .typographyTitleWrapper {
-    padding: 0 24px;
-    margin-bottom: 27px;
+.title {
+  padding-bottom: 27px;
+  text-align: center;
+}
 
-    .typographyTitle {
-      text-align: center;
-      margin: 0;
-    }
-  }
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
 
-  .typographyWrapper {
-    padding-bottom: 60px;
+.checkBox {
+  padding-top: 18px;
+}
 
-    .email {
-      padding-bottom: 24px;
-    }
+.forgot {
+  display: block;
+  color: var(--color-light-100);
+  text-align: right;
+  text-decoration: none;
+}
 
-    .tapographyCheckBox {
-      margin-top: 12px;
-    }
+.button {
+  margin-top: 60px;
+}
 
-    .forgotText {
-      text-align: right;
+.subTitleBody {
+  padding: 20px 0 7px;
+  text-align: center;
+}
 
-      padding-top: 6px;
-
-      .forgotTextBody2 {
-        margin: 0;
-      }
-    }
-  }
-
-  .subTitle {
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-    padding-top: 20px;
-
-    .subTitleBody2 {
-      margin: 0;
-      padding-bottom: 7px;
-      color: var(--color-light-900);
-    }
-
-    .subTitleLink {
-      margin: 0;
-      padding-top: 11px;
-      font-size: 16px;
-      font-weight: 700;
-    }
-  }
+.subTitleLink {
+  text-align: center;
 }

@@ -1,45 +1,71 @@
-.dropdownMenuContent {
-  position: relative;
-  right: 0;
-  padding: 12px;
-  background-color: var(--color-dark-700);
-  border-radius: 6px;
-  border: 1px solid var(--color-dark-500);
-}
-.IconButton {
-  line-height: 0 !important;
-  position: relative;
-
-  background-color: transparent;
+.trigger {
+  background: transparent;
   border: none;
 }
-.dropdownMenuItem {
+
+.content {
+  position: relative;
+  z-index: 999;
+
+  margin: 8px;
+  padding: 12px;
+
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-500);
+  border-radius: 4px;
+
+  .arrow {
+    position: absolute;
+    bottom: -5.1px;
+    transform: rotate(45deg);
+
+    width: 10px;
+    height: 10px;
+
+    background-color: var(--color-dark-700);
+    border: 1px solid var(--color-dark-500);
+    border-top: none;
+    border-left: none;
+  }
+
+  .contentItems {
+    > :first-child {
+      padding-top: 0;
+    }
+
+    > :last-child {
+      padding-bottom: 0;
+    }
+  }
+}
+
+.item {
+  cursor: pointer;
+
   display: flex;
+  gap: 6px;
   align-items: center;
-  justify-content: flex-start;
+
   padding: 12px 0;
-  &:focus-visible {
+
+  &[data-highlighted] {
+    color: pink;
     outline: none;
+    transition: transform 0.5s;
   }
 
-  &:nth-of-type(even) {
-    border-top: 1px solid var(--color-dark-500);
-    border-bottom: 1px solid var(--color-dark-500);
-  }
-  &:first-of-type {
-    padding-top: 0;
+  :focus-visible {
+    outline-color: transparent;
   }
 
-  &:last-of-type {
-    padding-bottom: 0;
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: #fff;
   }
 }
-.dropdownMenuItemSpan {
-  line-height: 0 !important;
-  padding-right: 6px;
-}
 
-.dropdownArrow {
-  transform: rotate(180deg);
-  top: 1px;
+.separator {
+  width: auto;
+  border: 1px solid var(--color-dark-500);
 }

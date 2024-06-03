@@ -1,4 +1,6 @@
 export * from './sign-up'
 export * from './forgot-form'
 export * from './sign-in'
+export * from './check-email'
+export * from './new-password'
 // export * from './sign-in'
