@@ -1,34 +1,39 @@
-import { Modal, ModalContent, ModalTrigger } from '@/components/ui/dialog/modal'
-import { DropdownRoot } from '@/components/ui/dropdown/dropdown'
-import * as Dialog from '@radix-ui/react-dialog'
+import { useState } from 'react'
+
+import { Modal } from '@/components/ui/dialog/modal'
 import { Meta, StoryObj } from '@storybook/react'
-vj
-import s from './modal.module.scss'
 const meta = {
-  component: DropdownRoot,
+  component: Modal,
   parameters: {
     background: 'black',
     layout: 'centered',
   },
   tags: ['autodocs'],
   title: 'Components/Modal',
-} satisfies Meta<typeof DropdownRoot>
+} satisfies Meta<typeof Modal>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
 export const DefaltValue: Story = {
-  render: () => {
+  args: {
+    children: 'Modal',
+    onOpenChange: () => {},
+    open: true,
+    title: 'Modal',
+  },
+  render: args => {
+    const [open, setOpen] = useState(false)
+
     return (
-      <Modal open>
-        <Dialog.Trigger asChild>
-          <button>Trigger</button>
-        </Dialog.Trigger>
-        <Dialog.Portal>
-          <Dialog.Overlay className={s.overa} />
-          <ModalContent className={s.content}>Content</ModalContent>
-        </Dialog.Portal>
-      </Modal>
+      <>
+        <div>
+          <button onClick={() => setOpen(true)}>ddkdk</button>
+        </div>
+        <Modal {...args} onOpenChange={setOpen} open={open}>
+          content
+        </Modal>
+      </>
     )
   },
 }
