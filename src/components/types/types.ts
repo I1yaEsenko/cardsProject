@@ -24,3 +24,7 @@ export type FriendsCards = {
 }
 export type GetDecksResponse = components['schemas']['PaginatedDecks']
 export type GetDecksArgs = operations['DecksController_findAllV2']['parameters']['query']
+export type CreateDeckArgs = components['schemas']['CreateDeckRequest']
+export type SDeleteDeckArgs = operations['DecksController_remove']['parameters']['path']
+
+export type OptionType = { title: string; value: string }

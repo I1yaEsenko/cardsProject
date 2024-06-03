@@ -1,43 +1,60 @@
-.tabsRoot {
-  .tabsList {
-  }
+.list {
+  display: inline-flex;
+  background-color: var(--color-dark-900);
+}
 
-  .tabsTrigger {
-    padding: 6px 24px;
-    background-color: transparent;
-    border: 1px solid var(--color-dark-300);
+.trigger {
+  cursor: pointer;
 
-    &:first-child {
-      //border-: 1px solid var(--color-dark-300);
-      border-radius: 2px 0 0 2px;
-      border-right: none;
-    }
+  padding: 6px 24px;
 
-    &:last-child {
-      //border-: 1px solid var(--color-dark-300);
-      border-radius: 0 2px 2px 0;
-      border-left: none;
-    }
+  font-size: var(--font-size-16-m);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-m);
+  color: var(--color-light-100);
 
-    &:active {
-      background-color: var(--color-accent-500);
-      border: 1px solid transparent;
-    }
+  background-color: transparent;
+  border: 1px solid var(--color-dark-300);
+  border-left-width: 0;
+
+  &[data-disabled] {
+    color: var(--color-dark-300);
+    background-color: var(--color-dark-700);
+    border-color: var(--color-dark-300);
 
     &:hover {
-      background-color: var(--color-dark-300);
-      color: var(--color-light-900);
-      border: 1px solid var(--color-dark-100);
-    }
-
-    &:disabled {
-      background-color: var(--color-dark-700);
       color: var(--color-dark-300);
-      border: 1px solid var(--color-dark-300);
+      background-color: var(--color-dark-700);
+      border-color: var(--color-dark-300);
     }
+  }
 
-    .tabsText {
-      margin: 0;
-    }
+  &:first-of-type {
+    border-left-width: 1px;
+    border-radius: 2px 0 0 2px;
+  }
+
+  &:last-of-type {
+    border-radius: 0 2px 2px 0;
+  }
+
+  &[data-state='active'] {
+    color: var(--color-light-100);
+
+    background-color: var(--color-accent-500);
+    border-color: var(--color-accent-500);
+
+    transition: 0.5s;
+    transition-timing-function: linear;
+  }
+
+  &:hover {
+    color: var(--color-light-900);
+
+    background-color: var(--color-dark-300);
+    border-color: var(--color-dark-100);
+
+    transition: 0.5s;
+    transition-timing-function: linear;
   }
 }

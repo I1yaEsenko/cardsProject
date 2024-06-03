@@ -1,4 +1,4 @@
-import NewPassword from '@/components/forms/new-password/new-password'
+import { NewPassword } from '@/components/forms/new-password/new-password'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {

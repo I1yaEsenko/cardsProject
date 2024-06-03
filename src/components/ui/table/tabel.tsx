@@ -56,28 +56,31 @@ export const Td = forwardRef<ElementRef<'td'>, ComponentPropsWithoutRef<'td'>>(
     )
   }
 )
-export const NavMenuTd = forwardRef<ElementRef<'div'>, ComponentPropsWithoutRef<'div'>>(
-  ({ ...restProps }, ref) => {
-    const classes = {
-      navMenu: s.tdNavMenu,
-      navMenuButton: s.tdNavMenuButton,
-    }
-
-    return (
-      <div className={classes.navMenu} {...restProps} ref={ref}>
-        <Button className={classes.navMenuButton}>
-          <img onClick={() => {}} src={Player} />
-        </Button>
-        <Button className={classes.navMenuButton}>
-          <img src={Pen} />
-        </Button>
-        <Button className={classes.navMenuButton}>
-          <img src={Trash} />
-        </Button>
-      </div>
-    )
+type PropsType = {
+  deleteHandler: (id: string) => void
+  editHandler: (id: string) => void
+  playHandler: (id: string) => void
+} & ComponentPropsWithoutRef<'div'>
+export const NavMenuTd = forwardRef<ElementRef<'div'>, PropsType>(({ ...restProps }, ref) => {
+  const classes = {
+    navMenu: s.tdNavMenu,
+    navMenuButton: s.tdNavMenuButton,
   }
-)
+
+  return (
+    <div className={classes.navMenu} {...restProps} ref={ref}>
+      <Button className={classes.navMenuButton}>
+        <img src={Player} />
+      </Button>
+      <Button className={classes.navMenuButton}>
+        <img src={Pen} />
+      </Button>
+      <Button className={classes.navMenuButton}>
+        <img src={Trash} />
+      </Button>
+    </div>
+  )
+})
 export const Th = forwardRef<ElementRef<'th'>, ComponentPropsWithoutRef<'th'>>(
   ({ children, className, ...rest }, ref) => {
     const classes = {
@@ -134,6 +137,8 @@ export const TableHeader: FC<
     })
   }
 
+  console.log(sort)
+
   return (
     <TableHead {...restProps}>
       <Tr>
@@ -150,6 +155,7 @@ export const TableHeader: FC<
                   )}
                 </span>
               )}
+              {onSort && sort?.key !== column.key && <span className={s.img}></span>}
             </Th>
           ) : (
             <Th key={column.key}>{column.title}</Th>

@@ -34,7 +34,7 @@ export const Selector = ({
 
   const initialValue = defaultValue ? defaultValue : options[0].value
   const classes = {
-    label: clsx(s.select, disabled === true ? s.disable : ''),
+    label: clsx(s.select, disabled ? s.disable : ''),
   }
 
   return (
