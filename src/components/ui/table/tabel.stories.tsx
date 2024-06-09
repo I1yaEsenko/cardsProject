@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react'
 
 import { SortType } from '@/components/types'
 import { FriendsCards } from '@/components/types/types'
-import { DeskList } from '@/components/ui/table/desk-list'
 import { FriendsDecks } from '@/components/ui/table/friends-deck/friends-decks'
 import { Table, TableBody, TableHead, TableHeader, Td, Th, Tr } from '@/components/ui/table/tabel'
 import { Meta, StoryObj } from '@storybook/react'
@@ -65,34 +64,39 @@ export const Primary: Story = {
 }
 const data = [
   {
-    cardsCount: 10,
+    cards: 10,
     createdBy: 'John Doe',
-    title: 'Project A',
-    updated: '2023-07-07',
+    id: '1',
+    lastUpdated: '2023-07-07',
+    name: 'Project A',
   },
   {
-    cardsCount: 5,
+    cards: 5,
     createdBy: 'Jane Smith',
+    id: '2',
+    lastUpdated: '2023-07-06',
     title: 'Project B',
-    updated: '2023-07-06',
   },
   {
-    cardsCount: 8,
+    cards: 8,
     createdBy: 'Alice Johnson',
+    id: '3',
+    lastUpdated: '2023-07-05',
     title: 'Project C',
-    updated: '2023-07-05',
   },
   {
-    cardsCount: 3,
+    cards: 3,
     createdBy: 'Bob Anderson',
-    title: 'Project D',
-    updated: '2023-07-07',
+    id: '4',
+    lastUpdated: '2023-07-07',
+    name: 'Project D',
   },
   {
-    cardsCount: 12,
+    cards: 12,
     createdBy: 'Emma Davis',
-    title: 'Project E',
-    updated: '2023-07-04',
+    id: '432',
+    lastUpdated: '2023-07-04',
+    name: 'Project E',
   },
 ]
 const columns = [
@@ -184,8 +188,8 @@ export const WithSort: Story = {
           {data.map(item => (
             <Tr key={item.title}>
               <Td>{item.title}</Td>
-              <Td>{item.cardsCount}</Td>
-              <Td>{item.updated}</Td>
+              <Td>{item.cards}</Td>
+              <Td>{item.lastUpdated}</Td>
               <Td>{item.createdBy}</Td>
               <Td>ellrlle</Td>
             </Tr>
@@ -195,11 +199,11 @@ export const WithSort: Story = {
     )
   },
 }
-export const DeskLists: Story = {
-  args: {
-    children: <DeskList card={data} columns={columns} />,
-  },
-}
+// export const DeskLists: Story = {
+//   args: {
+//     children: <DeskList card={data} columns={columns} />,
+//   },
+// }
 export const Friends: Story = {
   args: {
     children: <FriendsDecks card={dataFr} columns={columnFriends} />,
