@@ -8,6 +8,7 @@ module.exports = {
         'no-console': 'off',
         'no-duplicate-imports': 0,
         'react-hooks/rules-of-hooks': 'off'
+
       },
     },
   ],

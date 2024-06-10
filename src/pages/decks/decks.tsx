@@ -7,32 +7,10 @@ import { DeskList } from '@/components/ui/table/desk-list'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs/tabs'
 import { Typography } from '@/components/ui/typography'
 import { TypographyVariant } from '@/components/ui/typography/enum'
-import { CreateDecks } from '@/pages/decks/createDecks'
 import { PaginationContainer } from '@/pages/decks/paginationContainer'
 import { useDeleteDeckMutation, useGetDecksQuery } from '@/services/decks/decks.service'
-const columns = [
-  {
-    key: 'name',
-    title: 'Name',
-  },
-  {
-    key: 'cardsCount',
-    title: 'Cards',
-  },
-  {
-    key: 'updated',
-    title: 'Last Updated',
-  },
-  {
-    key: 'createdBy',
-    title: 'Created by',
-  },
-  {
-    key: 'actions',
-    title: '',
-  },
-]
 
+import s from './decks.module.scss'
 export const Decks = () => {
   const [view, setView] = useState<number>(5)
 
@@ -44,6 +22,7 @@ export const Decks = () => {
     name: search,
     // orderBy: 'author.name-',
   })
+  const [values, setValues] = useState([0, 100])
 
   const [deleteDeck] = useDeleteDeckMutation()
 
@@ -81,26 +60,25 @@ export const Decks = () => {
 
   return (
     <div style={{ margin: 'auto', width: '1006px' }}>
-      <CreateDecks />
-      <div>
+      {/*<CreateDecks />*/}
+      <div className={s.header}>
         <Typography variant={TypographyVariant.h1}>Decks list</Typography>
         <Button>Add New Deck</Button>
       </div>
       <div className={''}>
-        <Input onValueChange={setSearch} />
-        tabs
+        <Input onValueChange={setSearch} placeholder={'Input search'} search />
+
         <Tabs asChild>
-          <TabsList>
+          <TabsList defaultValue={'my'}>
             <TabsTrigger value={'my'}>My decks</TabsTrigger>
             <TabsTrigger value={'all'}>All decks</TabsTrigger>
           </TabsList>
         </Tabs>
-        <Slider />
+        <Slider max={100} min={1} onValueChange={setValues} step={1} value={values} />
         <Button variant={'secondary'}>Clear Filter</Button>
       </div>
       <DeskList
         card={mapData}
-        columns={columns}
         deleteHandler={deleteHandler}
         editHandler={editHandler}
         playHandler={playHandler}

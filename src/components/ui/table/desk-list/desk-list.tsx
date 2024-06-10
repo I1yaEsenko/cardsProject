@@ -15,14 +15,30 @@ type DeskListType = {
   editHandler: (id: string) => void
   playHandler: (id: string) => void
 }
+const columns = [
+  {
+    key: 'name',
+    title: 'Name',
+  },
+  {
+    key: 'cardsCount',
+    title: 'Cards',
+  },
+  {
+    key: 'updated',
+    title: 'Last Updated',
+  },
+  {
+    key: 'createdBy',
+    title: 'Created by',
+  },
+  {
+    key: 'actions',
+    title: '',
+  },
+]
 
-export const DeskList = ({
-  card,
-  columns,
-  deleteHandler,
-  editHandler,
-  playHandler,
-}: DeskListType) => {
+export const DeskList = ({ card, deleteHandler, editHandler, playHandler }: DeskListType) => {
   const [sort, setSort] = useState<SortType>(null)
   const sortedString = useMemo(() => {
     if (!sort) {
