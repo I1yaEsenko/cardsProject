@@ -24,6 +24,21 @@ export type FriendsCards = {
 }
 export type GetDecksResponse = components['schemas']['PaginatedDecks']
 export type GetDecksArgs = operations['DecksController_findAllV2']['parameters']['query']
+export type GetOrderBysArgs =
+  | 'author.name-asc'
+  | 'author.name-desc'
+  | 'cardsCount-asc'
+  | 'cardsCount-desc'
+  | 'created-asc'
+  | 'created-desc'
+  | 'name-asc'
+  | 'name-desc'
+  | 'null'
+  | 'updated-asc'
+  | 'updated-desc'
+  | null
+  | undefined
+
 export type CreateDeckArgs = components['schemas']['CreateDeckRequest']
 export type SDeleteDeckArgs = operations['DecksController_remove']['parameters']['path']
 

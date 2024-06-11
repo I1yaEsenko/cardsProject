@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { GetOrderBysArgs } from '@/components/types/types'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Slider } from '@/components/ui/slider'
@@ -16,13 +17,17 @@ export const Decks = () => {
 
   const [search, setSearch] = useState<string>('')
   const [currentPage, setCurrentPage] = useState<number>(1)
+  const [values, setValues] = useState([0, 100])
+  const [sort, setSort] = useState<GetOrderBysArgs>()
   const { data, isLoading } = useGetDecksQuery({
     currentPage,
     itemsPerPage: Number(view),
+    maxCardsCount: values[1],
+    minCardsCount: values[0],
     name: search,
+    orderBy: sort,
     // orderBy: 'author.name-',
   })
-  const [values, setValues] = useState([0, 100])
 
   const [deleteDeck] = useDeleteDeckMutation()
 
@@ -57,15 +62,18 @@ export const Decks = () => {
   const setForm = (value: number) => {
     setView(value)
   }
+  const setSortHandler = (value: GetOrderBysArgs) => {
+    setSort(value)
+  }
 
   return (
-    <div style={{ margin: 'auto', width: '1006px' }}>
+    <div style={{ margin: 'auto', width: '1010px' }}>
       {/*<CreateDecks />*/}
       <div className={s.header}>
         <Typography variant={TypographyVariant.h1}>Decks list</Typography>
         <Button>Add New Deck</Button>
       </div>
-      <div className={''}>
+      <div className={s.filter}>
         <Input onValueChange={setSearch} placeholder={'Input search'} search />
 
         <Tabs asChild>
@@ -74,7 +82,14 @@ export const Decks = () => {
             <TabsTrigger value={'all'}>All decks</TabsTrigger>
           </TabsList>
         </Tabs>
-        <Slider max={100} min={1} onValueChange={setValues} step={1} value={values} />
+        <Slider
+          className={s.slider}
+          max={100}
+          min={1}
+          onValueChange={setValues}
+          step={1}
+          value={values}
+        />
         <Button variant={'secondary'}>Clear Filter</Button>
       </div>
       <DeskList
@@ -82,6 +97,7 @@ export const Decks = () => {
         deleteHandler={deleteHandler}
         editHandler={editHandler}
         playHandler={playHandler}
+        setSortHandler={setSortHandler}
       />
 
       <PaginationContainer

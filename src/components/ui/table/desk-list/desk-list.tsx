@@ -4,6 +4,7 @@ import Pen from '@/assets/icons/pen.svg'
 import Player from '@/assets/icons/player.svg'
 import Trash from '@/assets/icons/trash.svg'
 import { CardType, ColumnType, SortType } from '@/components/types'
+import { GetOrderBysArgs } from '@/components/types/types'
 import { Button } from '@/components/ui/button'
 import { Table, TableBody, TableHeader, Td, Tr } from '@/components/ui/table'
 
@@ -14,6 +15,7 @@ type DeskListType = {
   deleteHandler: (id: string) => void
   editHandler: (id: string) => void
   playHandler: (id: string) => void
+  setSortHandler?: (value: GetOrderBysArgs) => void
 }
 const columns = [
   {
@@ -29,7 +31,7 @@ const columns = [
     title: 'Last Updated',
   },
   {
-    key: 'createdBy',
+    key: 'author.name',
     title: 'Created by',
   },
   {
@@ -38,7 +40,13 @@ const columns = [
   },
 ]
 
-export const DeskList = ({ card, deleteHandler, editHandler, playHandler }: DeskListType) => {
+export const DeskList = ({
+  card,
+  deleteHandler,
+  editHandler,
+  playHandler,
+  setSortHandler,
+}: DeskListType) => {
   const [sort, setSort] = useState<SortType>(null)
   const sortedString = useMemo(() => {
     if (!sort) {
@@ -49,7 +57,9 @@ export const DeskList = ({ card, deleteHandler, editHandler, playHandler }: Desk
     }
   }, [sort])
 
-  console.log(sortedString)
+  if (setSortHandler) {
+    setSortHandler(sortedString)
+  }
   // console.log(sort)
   const deleteOnclick = (id: string) => {
     deleteHandler(id)
