@@ -124,6 +124,8 @@ export const TableHeader: FC<
     }
 
     if (sort?.key !== key) {
+      debugger
+
       return onSort({ direction: 'asc', key })
     }
 

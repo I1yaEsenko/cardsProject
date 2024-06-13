@@ -25,7 +25,7 @@ export const Decks = () => {
     maxCardsCount: values[1],
     minCardsCount: values[0],
     name: search,
-    orderBy: sort,
+    orderBy: sort == 'null' ? 'null' : sort,
     // orderBy: 'author.name-',
   })
 
@@ -95,7 +95,7 @@ export const Decks = () => {
       <DeskList
         card={mapData}
         deleteHandler={deleteHandler}
-        editHandler={editHandler}
+        dieditHandler={editHandler}
         playHandler={playHandler}
         setSortHandler={setSortHandler}
       />

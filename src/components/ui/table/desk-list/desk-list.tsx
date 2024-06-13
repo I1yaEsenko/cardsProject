@@ -4,7 +4,6 @@ import Pen from '@/assets/icons/pen.svg'
 import Player from '@/assets/icons/player.svg'
 import Trash from '@/assets/icons/trash.svg'
 import { CardType, ColumnType, SortType } from '@/components/types'
-import { GetOrderBysArgs } from '@/components/types/types'
 import { Button } from '@/components/ui/button'
 import { Table, TableBody, TableHeader, Td, Tr } from '@/components/ui/table'
 
@@ -15,7 +14,7 @@ type DeskListType = {
   deleteHandler: (id: string) => void
   editHandler: (id: string) => void
   playHandler: (id: string) => void
-  setSortHandler?: (value: GetOrderBysArgs) => void
+  setSortHandler?: (value: string) => void
 }
 const columns = [
   {

@@ -1,21 +1,23 @@
 import { useState } from 'react'
 
-import { Modal } from '@/components/ui/dialog/modal'
 import { Meta, StoryObj } from '@storybook/react'
+
+import Dialog from './dialog'
+
 const meta = {
-  component: Modal,
+  component: Dialog,
   parameters: {
     background: 'black',
     layout: 'centered',
   },
   tags: ['autodocs'],
-  title: 'Components/Modal',
-} satisfies Meta<typeof Modal>
+  title: 'Components/Dialog',
+} satisfies Meta<typeof Dialog>
 
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const DefaltValue: Story = {
+export const First: Story = {
   args: {
     children: 'Modal',
     onOpenChange: () => {},
@@ -30,9 +32,9 @@ export const DefaltValue: Story = {
         <div>
           <button onClick={() => setOpen(true)}>ddkdk</button>
         </div>
-        <Modal {...args} onOpenChange={setOpen} open={open}>
-          content
-        </Modal>
+        <Dialog {...args} onOpenChange={setOpen} open={open}>
+          some form
+        </Dialog>
       </>
     )
   },
