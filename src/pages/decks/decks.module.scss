@@ -6,7 +6,8 @@
 }
 
 .filter {
-  display: flex;
+  display: inline-grid;
+  grid-template-columns: auto auto auto auto;
   gap: 25px;
 
   .slider {

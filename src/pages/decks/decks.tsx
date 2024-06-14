@@ -9,9 +9,15 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs/tabs'
 import { Typography } from '@/components/ui/typography'
 import { TypographyVariant } from '@/components/ui/typography/enum'
 import { PaginationContainer } from '@/pages/decks/paginationContainer'
-import { useDeleteDeckMutation, useGetDecksQuery } from '@/services/decks/decks.service'
+import {
+  useCreateDeckMutation,
+  useDeleteDeckMutation,
+  useGetDecksQuery,
+} from '@/services/decks/decks.service'
 
 import s from './decks.module.scss'
+
+import { CreateDecks } from '../../components/decks/create-decks'
 export const Decks = () => {
   const [view, setView] = useState<number>(5)
 
@@ -19,6 +25,9 @@ export const Decks = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [values, setValues] = useState([0, 100])
   const [sort, setSort] = useState<GetOrderBysArgs>()
+  const [openModal, setOpen] = useState(false)
+  const [createDeck] = useCreateDeckMutation()
+
   const { data, isLoading } = useGetDecksQuery({
     currentPage,
     itemsPerPage: Number(view),
@@ -65,13 +74,22 @@ export const Decks = () => {
   const setSortHandler = (value: GetOrderBysArgs) => {
     setSort(value)
   }
+  const createDecks = (data: any) => {
+    createDeck(data)
+  }
 
   return (
-    <div style={{ margin: 'auto', width: '1010px' }}>
+    <div style={{ margin: '0 auto', width: '1010px' }}>
       {/*<CreateDecks />*/}
       <div className={s.header}>
         <Typography variant={TypographyVariant.h1}>Decks list</Typography>
-        <Button>Add New Deck</Button>
+        <Button onClick={() => setOpen(true)}>Add New Deck</Button>
+        <CreateDecks
+          onOpenChange={setOpen}
+          onSubmitForm={createDecks}
+          open={openModal}
+          title={'Add New Deck'}
+        />
       </div>
       <div className={s.filter}>
         <Input onValueChange={setSearch} placeholder={'Input search'} search />
