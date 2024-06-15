@@ -11,7 +11,7 @@ import s from '@/components/ui/table/table.module.scss'
 type DeskListType = {
   card: CardType[] | undefined
   columns: ColumnType[]
-  deleteHandler: (id: string) => void
+  deleteHandler: (id: string, title: string) => void
   editHandler: (id: string) => void
   playHandler: (id: string) => void
   setSortHandler?: (value: string) => void
@@ -60,8 +60,8 @@ export const DeskList = ({
     setSortHandler(sortedString)
   }
   // console.log(sort)
-  const deleteOnclick = (id: string) => {
-    deleteHandler(id)
+  const deleteOnclick = (id: string, title: string) => {
+    deleteHandler(id, title)
   }
   const classes = {
     navMenu: s.tdNavMenu,
@@ -85,7 +85,10 @@ export const DeskList = ({
               <Button className={classes.navMenuButton} onClick={() => editHandler(item.id)}>
                 <img src={Pen} />
               </Button>
-              <Button className={classes.navMenuButton} onClick={() => deleteOnclick(item.id)}>
+              <Button
+                className={classes.navMenuButton}
+                onClick={() => deleteOnclick(item.id, item.name)}
+              >
                 <img src={Trash} />
               </Button>
             </Td>

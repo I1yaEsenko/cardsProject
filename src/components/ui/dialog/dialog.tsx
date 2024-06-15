@@ -3,19 +3,21 @@ import { Modal, ModalProps } from '@/components/ui/modal/modal'
 
 import s from './dialog.module.scss'
 export type DialogType = {
+  cancelName: string
   onCancel: () => void
   onSubmit: () => void
+  submitName: string
 } & ModalProps
-const Dialog = ({ children, onCancel, onSubmit, ...rest }: DialogType) => {
+const Dialog = ({ cancelName, children, onCancel, onSubmit, submitName, ...rest }: DialogType) => {
   return (
     <Modal {...rest}>
       {children}
       <div className={s.button}>
         <Button onClick={onCancel} variant={'secondary'}>
-          Cancel
+          {cancelName}
         </Button>
         <Button onClick={onSubmit} variant={'primary'}>
-          Add New Pack
+          {submitName}
         </Button>
       </div>
     </Modal>

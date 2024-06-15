@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import DeleteDecks from '@/components/decks/delete-decks/delete-decks'
 import { GetOrderBysArgs } from '@/components/types/types'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -25,7 +26,7 @@ export const Decks = () => {
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [values, setValues] = useState([0, 100])
   const [sort, setSort] = useState<GetOrderBysArgs>()
-  const [openModal, setOpen] = useState(false)
+  const [createDeckModal, setCreateModal] = useState(false)
   const [createDeck] = useCreateDeckMutation()
 
   const { data, isLoading } = useGetDecksQuery({
@@ -39,6 +40,9 @@ export const Decks = () => {
   })
 
   const [deleteDeck] = useDeleteDeckMutation()
+  const [deleteDeckModal, setDeleteModal] = useState(false)
+  const [deleteDeckModalTitle, setDeleteDeckModalTitle] = useState('')
+  const [deleteDeckModalId, setDeleteDeckModalId] = useState('')
 
   if (isLoading) {
     return <h1>loading</h1>
@@ -55,8 +59,16 @@ export const Decks = () => {
   for (let i = 0; i < (data?.pagination?.totalPages ?? 0); i++) {
     paginationOptions.push(i + 1)
   }
-  const deleteHandler = (id: string) => {
-    deleteDeck({ id })
+  const deleteHandler = (id: string, title: string) => {
+    setDeleteDeckModalId(id)
+    setDeleteModal(true)
+    setDeleteDeckModalTitle(title)
+  }
+  const deleteSubmit = () => {
+    deleteDeck({ id: deleteDeckModalId })
+    setDeleteDeckModalId('')
+    setDeleteDeckModalTitle('')
+    setDeleteModal(false)
   }
   const playHandler = (id: string) => {
     console.log('playHandler: ' + id)
@@ -80,14 +92,23 @@ export const Decks = () => {
 
   return (
     <div style={{ margin: '0 auto', width: '1010px' }}>
+      <DeleteDecks
+        cancelName={'Cancel'}
+        onOpenChange={setDeleteModal}
+        onSubmit={deleteSubmit}
+        open={deleteDeckModal}
+        submitName={'Delete Card'}
+        title={'Delete Card'}
+        titleDeck={deleteDeckModalTitle}
+      />
       {/*<CreateDecks />*/}
       <div className={s.header}>
         <Typography variant={TypographyVariant.h1}>Decks list</Typography>
-        <Button onClick={() => setOpen(true)}>Add New Deck</Button>
+        <Button onClick={() => setCreateModal(true)}>Add New Deck</Button>
         <CreateDecks
-          onOpenChange={setOpen}
+          onOpenChange={setCreateModal}
           onSubmitForm={createDecks}
-          open={openModal}
+          open={createDeckModal}
           title={'Add New Deck'}
         />
       </div>

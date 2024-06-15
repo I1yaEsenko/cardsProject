@@ -6,11 +6,11 @@ import { ControlledCheckbox } from '@/components/ui/controlled/controlled-checkb
 import { ControlledInput } from '@/components/ui/controlled/controlled-input'
 import Dialog, { DialogType } from '@/components/ui/dialog/dialog'
 
-import s from 'src/components/decks/createDecks/create-decks.module.scss'
+import s from './create-decks.module.scss'
 type CreateType = {
   onCancel?: () => void
   onSubmitForm: (data: any) => void
-} & Omit<DialogType, 'children' | 'onCancel' | 'onSubmit'>
+} & Omit<DialogType, 'cancelName' | 'children' | 'onCancel' | 'onSubmit' | 'submitName'>
 export const CreateDecks = ({ onSubmitForm, ...rest }: CreateType) => {
   const { control, handleSubmit } = useForm()
   const onCancel = () => {
@@ -22,14 +22,18 @@ export const CreateDecks = ({ onSubmitForm, ...rest }: CreateType) => {
   })
 
   return (
-    <>
-      <Dialog {...rest} onCancel={onCancel} onSubmit={onSubmitHandler}>
-        <form className={s.form} onSubmit={onSubmitHandler}>
-          <ControlledInput control={control} label={'Name Pack'} name={'name'} />
-          <Button variant={'secondary'}>{<ImageOutline />}Update Image</Button>
-          <ControlledCheckbox control={control} label={'Private Decks'} name={'isPrivate'} />
-        </form>
-      </Dialog>
-    </>
+    <Dialog
+      {...rest}
+      cancelName={'Cancel'}
+      onCancel={onCancel}
+      onSubmit={onSubmitHandler}
+      submitName={'Add New Pack'}
+    >
+      <form className={s.form} onSubmit={onSubmitHandler}>
+        <ControlledInput control={control} label={'Name Pack'} name={'name'} />
+        <Button variant={'secondary'}>{<ImageOutline />}Update Image</Button>
+        <ControlledCheckbox control={control} label={'Private Decks'} name={'isPrivate'} />
+      </form>
+    </Dialog>
   )
 }

@@ -19,9 +19,11 @@ type Story = StoryObj<typeof meta>
 
 export const First: Story = {
   args: {
+    cancelName: 'erer',
     children: 'Modal',
     onOpenChange: () => {},
     open: true,
+    submitName: 'sddw',
     title: 'Modal',
   },
   render: args => {
