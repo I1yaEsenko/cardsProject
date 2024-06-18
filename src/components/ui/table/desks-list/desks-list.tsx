@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import Pen from '@/assets/icons/pen.svg'
 import Player from '@/assets/icons/player.svg'
@@ -6,6 +7,7 @@ import Trash from '@/assets/icons/trash.svg'
 import { CardType, ColumnType, SortType } from '@/components/types'
 import { Button } from '@/components/ui/button'
 import { Table, TableBody, TableHeader, Td, Tr } from '@/components/ui/table'
+import { Typography } from '@/components/ui/typography'
 
 import s from '@/components/ui/table/table.module.scss'
 type DeskListType = {
@@ -39,7 +41,7 @@ const columns = [
   },
 ]
 
-export const DeskList = ({
+export const DesksList = ({
   card,
   deleteHandler,
   editHandler,
@@ -74,9 +76,13 @@ export const DeskList = ({
       <TableBody>
         {card?.map(item => (
           <Tr key={item.id}>
-            <Td>{item.name}</Td>
+            <Td>
+              <Typography as={Link} to={`/deck/${item.id}`}>
+                {item.name}
+              </Typography>
+            </Td>
             <Td>{item.cards}</Td>
-            <Td>{item.lastUpdated}</Td>
+            <Td>{new Date(item.lastUpdated).toLocaleDateString()}</Td>
             <Td>{item.createdBy}</Td>
             <Td>
               <Button className={classes.navMenuButton} onClick={() => playHandler(item.id)}>

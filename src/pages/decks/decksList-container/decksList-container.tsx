@@ -1,4 +1,4 @@
-import { DeskList } from '@/components/ui/table/desk-list'
+import { DesksList } from '../../../components/ui/table/desks-list'
 
 const columns = [
   {
@@ -32,7 +32,7 @@ type PropsType = {
   playHandler: (id: string) => void
 }
 const DecksListContainer = ({ card, ...restProps }: PropsType) => {
-  return <DeskList card={card} columns={columns} {...restProps} />
+  return <DesksList card={card} columns={columns} {...restProps} />
 }
 
 export default DecksListContainer

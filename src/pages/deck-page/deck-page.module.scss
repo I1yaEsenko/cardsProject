@@ -1,0 +1,32 @@
+.wrapper {
+  width: 1008px;
+  margin: 0 auto;
+
+  .link {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    text-decoration: none;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    margin: 36px 0 24px;
+
+    .title {
+      display: flex;
+      justify-content: space-between;
+      padding-bottom: 25px;
+    }
+  }
+}
+
+.table {
+  margin: 24px 0;
+}

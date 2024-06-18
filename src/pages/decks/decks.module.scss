@@ -22,3 +22,15 @@
     width: 299px;
   }
 }
+
+.tabsWrapp {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.sliderWrapp {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}

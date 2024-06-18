@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
+import { CreateDecks } from '@/components/decks/create-decks'
 import DeleteDecks from '@/components/decks/delete-decks/delete-decks'
 import { GetOrderBysArgs } from '@/components/types/types'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Slider } from '@/components/ui/slider'
-import { DeskList } from '@/components/ui/table/desk-list'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs/tabs'
 import { Typography } from '@/components/ui/typography'
 import { TypographyVariant } from '@/components/ui/typography/enum'
@@ -18,7 +18,8 @@ import {
 
 import s from './decks.module.scss'
 
-import { CreateDecks } from '../../components/decks/create-decks'
+import { DesksList } from '../../components/ui/table/desks-list'
+
 export const Decks = () => {
   const [view, setView] = useState<number>(5)
 
@@ -114,24 +115,33 @@ export const Decks = () => {
       </div>
       <div className={s.filter}>
         <Input onValueChange={setSearch} placeholder={'Input search'} search />
-
-        <Tabs asChild>
-          <TabsList defaultValue={'my'}>
-            <TabsTrigger value={'my'}>My decks</TabsTrigger>
-            <TabsTrigger value={'all'}>All decks</TabsTrigger>
-          </TabsList>
-        </Tabs>
-        <Slider
-          className={s.slider}
-          max={100}
-          min={1}
-          onValueChange={setValues}
-          step={1}
-          value={values}
-        />
+        <div className={s.tabsWrapp}>
+          <Typography as={'p'} variant={TypographyVariant.body2}>
+            Show decks cards
+          </Typography>
+          <Tabs asChild>
+            <TabsList defaultValue={'my'}>
+              <TabsTrigger value={'my'}>My decks</TabsTrigger>
+              <TabsTrigger value={'all'}>All decks</TabsTrigger>
+            </TabsList>
+          </Tabs>
+        </div>
+        <div className={s.sliderWrapp}>
+          <Typography as={'p'} variant={TypographyVariant.body2}>
+            Number of cards
+          </Typography>
+          <Slider
+            className={s.slider}
+            max={100}
+            min={1}
+            onValueChange={setValues}
+            step={1}
+            value={values}
+          />
+        </div>
         <Button variant={'secondary'}>Clear Filter</Button>
       </div>
-      <DeskList
+      <DesksList
         card={mapData}
         deleteHandler={deleteHandler}
         dieditHandler={editHandler}

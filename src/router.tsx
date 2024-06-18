@@ -1,5 +1,4 @@
 import {
-  Link,
   Navigate,
   Outlet,
   RouteObject,
@@ -7,8 +6,8 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
+import DeckPage from '@/pages/deck-page/deck-page'
 import { Decks } from '@/pages/decks'
-import { useGetDecksQuery } from '@/services/decks/decks.service'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -16,16 +15,16 @@ const publicRoutes: RouteObject[] = [
     path: '/login',
   },
 ]
-const Component2 = () => {
-  const { data } = useGetDecksQuery()
-
-  return (
-    <div>
-      <Link to={'/'}>MainPage</Link>
-      <div>{JSON.stringify(data)}</div>
-    </div>
-  )
-}
+// const Component2 = () => {
+//   const { data } = useGetDecksQuery()
+//
+//   return (
+//     <div>
+//       <Link to={'/'}>MainPage</Link>
+//       <div>{JSON.stringify(data)}</div>
+//     </div>
+//   )
+// }
 
 const privateRoutes: RouteObject[] = [
   {
@@ -33,8 +32,8 @@ const privateRoutes: RouteObject[] = [
     path: '/',
   },
   {
-    element: <Component2 />,
-    path: '/2',
+    element: <DeckPage />,
+    path: '/deck/:deckId',
   },
 ]
 
