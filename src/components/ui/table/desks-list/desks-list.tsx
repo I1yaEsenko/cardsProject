@@ -8,8 +8,10 @@ import { CardType, ColumnType, SortType } from '@/components/types'
 import { Button } from '@/components/ui/button'
 import { Table, TableBody, TableHeader, Td, Tr } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
+import { TypographyVariant } from '@/components/ui/typography/enum'
 
 import s from '@/components/ui/table/table.module.scss'
+
 type DeskListType = {
   card: CardType[] | undefined
   columns: ColumnType[]
@@ -51,7 +53,7 @@ export const DesksList = ({
   const [sort, setSort] = useState<SortType>(null)
   const sortedString = useMemo(() => {
     if (!sort) {
-      return null
+      return 'null'
     }
     if (sort) {
       return `${sort.key}-${sort.direction}`
@@ -77,7 +79,12 @@ export const DesksList = ({
         {card?.map(item => (
           <Tr key={item.id}>
             <Td>
-              <Typography as={Link} to={`/deck/${item.id}`}>
+              <Typography
+                as={Link}
+                className={s.link}
+                to={`/deck/${item.id}`}
+                variant={TypographyVariant.body2}
+              >
                 {item.name}
               </Typography>
             </Td>

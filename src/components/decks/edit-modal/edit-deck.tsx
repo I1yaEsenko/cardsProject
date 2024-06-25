@@ -1,26 +1,26 @@
 import { useForm } from 'react-hook-form'
 
 import ImageOutline from '@/assets/icons/components/ImageOutline'
-import { FormCreateType, createDecksSchema } from '@/components/decks/schema-decks'
 import { Button } from '@/components/ui/button'
 import { ControlledCheckbox } from '@/components/ui/controlled/controlled-checkbox'
 import { ControlledInput } from '@/components/ui/controlled/controlled-input'
 import Dialog, { DialogType } from '@/components/ui/dialog/dialog'
-import { zodResolver } from '@hookform/resolvers/zod'
 
-import s from './create-decks.module.scss'
-type CreateType = {
+import s from '@/components/decks/create-decks/create-decks.module.scss'
+
+type DeleteType = {
+  isPrivate: string
+  name: string
   onCancel?: () => void
   onSubmitForm: (data: any) => void
 } & Omit<DialogType, 'cancelName' | 'children' | 'onCancel' | 'onSubmit' | 'submitName'>
 
-export const CreateDecks = ({ onSubmitForm, ...rest }: CreateType) => {
-  const { control, handleSubmit } = useForm<FormCreateType>({
+const EditDeck = ({ isPrivate, name, onSubmitForm, ...rest }: DeleteType) => {
+  const { control, handleSubmit } = useForm({
     defaultValues: {
-      isPrivate: false,
-      name: '',
+      isPrivate,
+      name,
     },
-    resolver: zodResolver(createDecksSchema),
   })
   const onCancel = () => {
     rest.onOpenChange(false)
@@ -46,3 +46,5 @@ export const CreateDecks = ({ onSubmitForm, ...rest }: CreateType) => {
     </Dialog>
   )
 }
+
+export default EditDeck

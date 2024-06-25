@@ -1,11 +1,14 @@
 import { useState } from 'react'
+import { useForm } from 'react-hook-form'
 
 import { CreateDecks } from '@/components/decks/create-decks'
 import DeleteDecks from '@/components/decks/delete-decks/delete-decks'
+import EditDeck from '@/components/decks/edit-modal/edit-deck'
 import { GetOrderBysArgs } from '@/components/types/types'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Slider } from '@/components/ui/slider'
+import { DesksList } from '@/components/ui/table/desks-list'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs/tabs'
 import { Typography } from '@/components/ui/typography'
 import { TypographyVariant } from '@/components/ui/typography/enum'
@@ -18,9 +21,8 @@ import {
 
 import s from './decks.module.scss'
 
-import { DesksList } from '../../components/ui/table/desks-list'
-
 export const Decks = () => {
+  const {} = useForm()
   const [view, setView] = useState<number>(5)
 
   const [search, setSearch] = useState<string>('')
@@ -102,7 +104,7 @@ export const Decks = () => {
         title={'Delete Card'}
         titleDeck={deleteDeckModalTitle}
       />
-      {/*<CreateDecks />*/}
+      <EditDeck onSubmitForm={} title={'Edit Deck'} />
       <div className={s.header}>
         <Typography variant={TypographyVariant.h1}>Decks list</Typography>
         <Button onClick={() => setCreateModal(true)}>Add New Deck</Button>

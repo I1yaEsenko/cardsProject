@@ -11,6 +11,14 @@ import { baseApi } from '@/services/base-api'
 export const decksService = baseApi.injectEndpoints({
   endpoints: builder => {
     return {
+      changeDecksByID: builder.mutation<void, { data: any }>({
+        invalidatesTags: ['Decks'],
+        query: args => ({
+          body: args.data,
+          method: 'PATCH',
+          url: `/v1/decks/${args.data.id}`,
+        }),
+      }),
       createDeck: builder.mutation<void, CreateDeckArgs>({
         invalidatesTags: ['Decks'],
         query: arg => ({
