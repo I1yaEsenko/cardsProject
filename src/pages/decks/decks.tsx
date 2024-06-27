@@ -3,7 +3,6 @@ import { useForm } from 'react-hook-form'
 
 import { CreateDecks } from '@/components/decks/create-decks'
 import DeleteDecks from '@/components/decks/delete-decks/delete-decks'
-import EditDeck from '@/components/decks/edit-modal/edit-deck'
 import { GetOrderBysArgs } from '@/components/types/types'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -104,7 +103,7 @@ export const Decks = () => {
         title={'Delete Card'}
         titleDeck={deleteDeckModalTitle}
       />
-      <EditDeck onSubmitForm={} title={'Edit Deck'} />
+      {/*<EditDeck onSubmitForm={} title={'Edit Deck'} />*/}
       <div className={s.header}>
         <Typography variant={TypographyVariant.h1}>Decks list</Typography>
         <Button onClick={() => setCreateModal(true)}>Add New Deck</Button>

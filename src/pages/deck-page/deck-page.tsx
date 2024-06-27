@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import ArrowBackOutline from '@/assets/icons/components/ArrowBackOutline'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { Rating } from '@/components/ui/rating'
 import { Table, TableBody, TableHeader, Td, Tr } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
 import { TypographyVariant } from '@/components/ui/typography/enum'
@@ -53,7 +54,9 @@ const DeckPage = () => {
               <Td>{item.question}</Td>
               <Td>{item.answer}</Td>
               <Td>{new Date(item.updated).toLocaleDateString()}</Td>
-              <Td>{item.grade}</Td>
+              <Td>
+                <Rating rating={item.grade} />
+              </Td>
             </Tr>
           ))}
         </TableBody>
