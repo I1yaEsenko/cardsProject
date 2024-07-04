@@ -16,11 +16,6 @@ export const Rating = ({ rating }: RatingType) => {
           <div className={s.wrapper} key={index}>
             {index >= rate ? <StarOutline className={s.star} /> : <Star className={s.star} />}
           </div>
-          // <StarOutline key={index} />
-
-          // <div key={index} style={index >= rate ? { color: 'red' } : { color: 'green' }}>
-          //   index
-          // </div>
         )
       })}
     </div>

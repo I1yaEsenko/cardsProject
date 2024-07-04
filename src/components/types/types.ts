@@ -37,8 +37,6 @@ export type GetOrderBysArgs =
   | 'null'
   | 'updated-asc'
   | 'updated-desc'
-  | null
-  | undefined
 export type DeckResponse = components['schemas']['DeckWithAuthor']
 export type CreateDeckArgs = components['schemas']['CreateDeckRequest']
 export type SDeleteDeckArgs = operations['DecksController_remove']['parameters']['path']

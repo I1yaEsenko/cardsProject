@@ -10,18 +10,21 @@ import { zodResolver } from '@hookform/resolvers/zod'
 
 import s from './create-decks.module.scss'
 type CreateType = {
+  isPrivate?: boolean
+  name?: string
   onCancel?: () => void
   onSubmitForm: (data: any) => void
 } & Omit<DialogType, 'cancelName' | 'children' | 'onCancel' | 'onSubmit' | 'submitName'>
 
-export const CreateDecks = ({ onSubmitForm, ...rest }: CreateType) => {
+export const CreateDecks = ({ isPrivate, name, onSubmitForm, ...rest }: CreateType) => {
   const { control, handleSubmit } = useForm<FormCreateType>({
     defaultValues: {
-      isPrivate: false,
-      name: '',
+      isPrivate: isPrivate || false,
+      name: name || '',
     },
     resolver: zodResolver(createDecksSchema),
   })
+
   const onCancel = () => {
     rest.onOpenChange(false)
   }
@@ -29,6 +32,8 @@ export const CreateDecks = ({ onSubmitForm, ...rest }: CreateType) => {
     onSubmitForm(data)
     rest.onOpenChange(false)
   })
+
+  console.log(control)
 
   return (
     <Dialog

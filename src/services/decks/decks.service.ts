@@ -7,16 +7,20 @@ import {
   GetDecksResponse,
 } from '@/components/types/types'
 import { baseApi } from '@/services/base-api'
-
+export type ChangeDecksByID = {
+  cover: string
+  isPrivate: boolean
+  name: string
+}
 export const decksService = baseApi.injectEndpoints({
   endpoints: builder => {
     return {
-      changeDecksByID: builder.mutation<void, { data: any }>({
+      changeDecksByID: builder.mutation<void, { data: ChangeDecksByID; id: string }>({
         invalidatesTags: ['Decks'],
         query: args => ({
           body: args.data,
           method: 'PATCH',
-          url: `/v1/decks/${args.data.id}`,
+          url: `/v1/decks/${args.id}`,
         }),
       }),
       createDeck: builder.mutation<void, CreateDeckArgs>({
@@ -58,6 +62,7 @@ export const decksService = baseApi.injectEndpoints({
 })
 
 export const {
+  useChangeDecksByIDMutation,
   useCreateDeckMutation,
   useDeleteDeckMutation,
   useGetCardsByIdQuery,

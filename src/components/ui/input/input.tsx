@@ -53,12 +53,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           {search && <SearchSvg className={s.inputSearch} />}
           <input
             className={`${s.input} ${error ? s.error : ''} ${search ? s.search : ''}`}
-            {...rest}
             onChange={handleChange}
             placeholder={placeholder}
             ref={ref}
             type={finalType}
             value={searchValue}
+            {...rest}
           />
           {variant === 'password' && (
             <button

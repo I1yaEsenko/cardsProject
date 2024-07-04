@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import Pen from '@/assets/icons/pen.svg'
 import Player from '@/assets/icons/player.svg'
 import Trash from '@/assets/icons/trash.svg'
-import { CardType, ColumnType, SortType } from '@/components/types'
+import { CardType, SortType } from '@/components/types'
 import { Button } from '@/components/ui/button'
 import { Table, TableBody, TableHeader, Td, Tr } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
@@ -14,8 +14,7 @@ import s from '@/components/ui/table/table.module.scss'
 
 type DeskListType = {
   card: CardType[] | undefined
-  columns: ColumnType[]
-  deleteHandler: (id: string, title: string) => void
+  deleteHandler: (id: string) => void
   editHandler: (id: string) => void
   playHandler: (id: string) => void
   setSortHandler?: (value: string) => void
@@ -51,9 +50,10 @@ export const DesksList = ({
   setSortHandler,
 }: DeskListType) => {
   const [sort, setSort] = useState<SortType>(null)
+
   const sortedString = useMemo(() => {
     if (!sort) {
-      return 'null'
+      return null
     }
     if (sort) {
       return `${sort.key}-${sort.direction}`
@@ -61,11 +61,14 @@ export const DesksList = ({
   }, [sort])
 
   if (setSortHandler) {
-    setSortHandler(sortedString)
+    setSortHandler(sortedString || 'null')
   }
-  // console.log(sort)
-  const deleteOnclick = (id: string, title: string) => {
-    deleteHandler(id, title)
+
+  const editOnClick = (id: string) => {
+    editHandler(id)
+  }
+  const deleteOnclick = (id: string) => {
+    deleteHandler(id)
   }
   const classes = {
     navMenu: s.tdNavMenu,
@@ -93,16 +96,13 @@ export const DesksList = ({
             <Td>{item.createdBy}</Td>
             <Td>
               <Button className={classes.navMenuButton} onClick={() => playHandler(item.id)}>
-                <img src={Player} />
+                <img alt={'player'} src={Player} />
               </Button>
-              <Button className={classes.navMenuButton} onClick={() => editHandler(item.id)}>
-                <img src={Pen} />
+              <Button className={classes.navMenuButton} onClick={() => editOnClick(item.id)}>
+                <img alt={'pen'} src={Pen} />
               </Button>
-              <Button
-                className={classes.navMenuButton}
-                onClick={() => deleteOnclick(item.id, item.name)}
-              >
-                <img src={Trash} />
+              <Button className={classes.navMenuButton} onClick={() => deleteOnclick(item.id)}>
+                <img alt={'Trash'} src={Trash} />
               </Button>
             </Td>
           </Tr>
