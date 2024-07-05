@@ -192,8 +192,7 @@ export interface components {
       /** Format: date-time */
       updated: string;
       userId: string;
-    };
-    CardWithGrade: {
+    };CardWithGrade: {
       answer: string;
       answerImg: string;
       answerVideo: string;

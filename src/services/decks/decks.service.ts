@@ -1,10 +1,12 @@
 import {
+  CardWithGrade,
   CreateDeckArgs,
   DeckResponse,
   GetCards,
   // DeleteDeckArgs,
   GetDecksArgs,
   GetDecksResponse,
+  SaveGrade,
 } from '@/components/types/types'
 import { baseApi } from '@/services/base-api'
 export type ChangeDecksByID = {
@@ -23,6 +25,7 @@ export const decksService = baseApi.injectEndpoints({
           url: `/v1/decks/${args.id}`,
         }),
       }),
+
       createDeck: builder.mutation<void, CreateDeckArgs>({
         invalidatesTags: ['Decks'],
         query: arg => ({
@@ -57,6 +60,20 @@ export const decksService = baseApi.injectEndpoints({
           url: `v1/decks/${arg.id}`,
         }),
       }),
+      getLearnCards: builder.query<CardWithGrade, { id: string }>({
+        providesTags: ['Decks'],
+        query: arg => ({
+          url: `v1/decks/${arg.id}/learn`,
+        }),
+      }),
+      saveRate: builder.mutation<CardWithGrade, { data: SaveGrade; deckId: string }>({
+        invalidatesTags: ['Decks'],
+        query: arg => ({
+          body: arg.data,
+          method: 'DELETE',
+          url: `/v1/decks/${arg.deckId}/learn`,
+        }),
+      }),
     }
   },
 })
@@ -68,4 +85,6 @@ export const {
   useGetCardsByIdQuery,
   useGetDecksByIdQuery,
   useGetDecksQuery,
+  useGetLearnCardsQuery,
+  useSaveRateMutation,
 } = decksService

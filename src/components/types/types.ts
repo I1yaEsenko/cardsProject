@@ -37,8 +37,12 @@ export type GetOrderBysArgs =
   | 'null'
   | 'updated-asc'
   | 'updated-desc'
+export type CardWithGrade = components['schemas']['CardWithGrade']
 export type DeckResponse = components['schemas']['DeckWithAuthor']
 export type CreateDeckArgs = components['schemas']['CreateDeckRequest']
 export type SDeleteDeckArgs = operations['DecksController_remove']['parameters']['path']
-
+export type SaveGrade = {
+  cardId: string
+  grade: number
+}
 export type OptionType = { title: string; value: string }

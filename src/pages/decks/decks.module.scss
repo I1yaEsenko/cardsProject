@@ -6,9 +6,10 @@
 }
 
 .filter {
-  display: inline-grid;
-  grid-template-columns: auto auto auto auto;
-  gap: 25px;
+  display: flex;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+  margin: 10px 0 16px;
 
   .slider {
     max-width: 251px;

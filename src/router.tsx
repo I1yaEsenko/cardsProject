@@ -8,6 +8,7 @@ import {
 
 import DeckPage from '@/pages/deck-page/deck-page'
 import { Decks } from '@/pages/decks'
+import LearnPage from '@/pages/learn-page/learn-page'
 
 const publicRoutes: RouteObject[] = [
   {
@@ -34,6 +35,10 @@ const privateRoutes: RouteObject[] = [
   {
     element: <DeckPage />,
     path: '/deck/:deckId',
+  },
+  {
+    element: <LearnPage />,
+    path: '/deck/:deckId/learn',
   },
 ]
 

@@ -146,7 +146,7 @@ export const Decks = () => {
           <Typography as={'p'} variant={TypographyVariant.body2}>
             Show decks cards
           </Typography>
-          <Tabs asChild>
+          <Tabs asChild value={'all'}>
             <TabsList defaultValue={'my'}>
               <TabsTrigger value={'my'}>My decks</TabsTrigger>
               <TabsTrigger value={'all'}>All decks</TabsTrigger>

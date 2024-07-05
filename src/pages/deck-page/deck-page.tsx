@@ -41,7 +41,16 @@ const DeckPage = () => {
       <div className={s.header}>
         <div className={s.title}>
           <Typography variant={TypographyVariant.h1}>{deckData?.name}</Typography>
-          <Button>Learn to Deck</Button>
+          <Button>
+            <Typography
+              as={Link}
+              className={s.link}
+              to={`/deck/${deckId}/learn`}
+              variant={TypographyVariant.body2}
+            >
+              Learn to Deck
+            </Typography>
+          </Button>
         </div>
         <Input placeholder={'Input search'} search />
       </div>
