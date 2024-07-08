@@ -37,7 +37,6 @@ export const Decks = () => {
     minCardsCount: values[0],
     name: search,
     orderBy: sort == 'null' ? 'null' : sort,
-    // orderBy: 'author.name-',
   })
   //Delete
   const [deleteDeck] = useDeleteDeckMutation()

@@ -16,7 +16,5 @@ export const ControlledInput = <T extends FieldValues>({ control, label, ...rest
     name: rest.name,
   })
 
-  console.log(field)
-
   return <Input {...rest} {...field} error={!!error} errorMessage={error?.message} label={label} />
 }

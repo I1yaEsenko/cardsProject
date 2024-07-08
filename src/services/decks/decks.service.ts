@@ -25,7 +25,6 @@ export const decksService = baseApi.injectEndpoints({
           url: `/v1/decks/${args.id}`,
         }),
       }),
-
       createDeck: builder.mutation<void, CreateDeckArgs>({
         invalidatesTags: ['Decks'],
         query: arg => ({

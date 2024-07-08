@@ -8,6 +8,7 @@ import { ControlledInput } from '@/components/ui/controlled/controlled-input/con
 import { Typography } from '@/components/ui/typography'
 import { TypographyVariant } from '@/components/ui/typography/enum'
 import { emailSchema, passwordSchema } from '@/components/utils/zodSchemes/schema'
+import { useLoginMutation } from '@/services/auth/auth.service'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -21,12 +22,13 @@ const loginSchema = z.object({
 
 type FormValues = z.infer<typeof loginSchema>
 type PropsType = {
-  onSubmit: (data: FormValues) => void
+  onSubmit?: (data: FormValues) => void
 }
 export const SignIn = ({ onSubmit }: PropsType) => {
   const { control, handleSubmit } = useForm<FormValues>({ resolver: zodResolver(loginSchema) })
+  const [submit] = useLoginMutation()
   const onSubmitHandler = (data: FormValues) => {
-    onSubmit(data)
+    submit(data)
   }
 
   return (
