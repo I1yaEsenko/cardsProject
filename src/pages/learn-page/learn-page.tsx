@@ -39,7 +39,7 @@ const LearnPage = () => {
 
   const saveRateHandler = () => {
     saveRate({
-      data: { cardId: DecksName?.id || '', grade: Number(rate) },
+      data: { cardId: data?.id || '', grade: +rate },
       deckId: deckId || '',
     })
   }

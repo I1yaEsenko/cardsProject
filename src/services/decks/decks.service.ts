@@ -69,7 +69,7 @@ export const decksService = baseApi.injectEndpoints({
         invalidatesTags: ['Decks'],
         query: arg => ({
           body: arg.data,
-          method: 'DELETE',
+          method: 'POST',
           url: `/v1/decks/${arg.deckId}/learn`,
         }),
       }),

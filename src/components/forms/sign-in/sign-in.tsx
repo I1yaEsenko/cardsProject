@@ -28,7 +28,7 @@ export const SignIn = ({ onSubmit }: PropsType) => {
   const { control, handleSubmit } = useForm<FormValues>({ resolver: zodResolver(loginSchema) })
   const [submit] = useLoginMutation()
   const onSubmitHandler = (data: FormValues) => {
-    submit(data)
+    onSubmit(data)
   }
 
   return (
