@@ -1,6 +1,11 @@
 .list {
-  display: inline-flex;
-  background-color: var(--color-dark-900);
+  overflow: auto hidden;
+  display: flex;
+
+  flex-direction: row;
+  row-gap: 0.5em;
+
+  white-space: nowrap;
 }
 
 .trigger {

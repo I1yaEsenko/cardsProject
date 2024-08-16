@@ -1,1 +1,1 @@
-export { Decks } from './decks'
+export * from './decks'

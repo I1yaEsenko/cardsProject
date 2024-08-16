@@ -1,51 +1,60 @@
 import { useState } from 'react'
 
+import { CreateDecks } from '@/components/decks/create-decks'
+import DeleteDecks from '@/components/decks/delete-decks/delete-decks'
+// import { GetOrderBysArgs } from '@/components/types/types'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Slider } from '@/components/ui/slider'
-import { DeskList } from '@/components/ui/table/desk-list'
+import { DesksList } from '@/components/ui/table/desks-list'
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs/tabs'
 import { Typography } from '@/components/ui/typography'
 import { TypographyVariant } from '@/components/ui/typography/enum'
-import { CreateDecks } from '@/pages/decks/createDecks'
 import { PaginationContainer } from '@/pages/decks/paginationContainer'
-import { useDeleteDeckMutation, useGetDecksQuery } from '@/services/decks/decks.service'
-const columns = [
-  {
-    key: 'name',
-    title: 'Name',
-  },
-  {
-    key: 'cardsCount',
-    title: 'Cards',
-  },
-  {
-    key: 'updated',
-    title: 'Last Updated',
-  },
-  {
-    key: 'createdBy',
-    title: 'Created by',
-  },
-  {
-    key: 'actions',
-    title: '',
-  },
-]
+import {
+  useChangeDecksByIDMutation,
+  useCreateDeckMutation,
+  useDeleteDeckMutation,
+  useGetDecksByIdQuery,
+  useGetDecksQuery,
+} from '@/services/decks/decks.service'
+
+import s from './decks.module.scss'
 
 export const Decks = () => {
   const [view, setView] = useState<number>(5)
-
   const [search, setSearch] = useState<string>('')
   const [currentPage, setCurrentPage] = useState<number>(1)
+  const [values, setValues] = useState([0, 100])
+  const [sort, setSort] = useState('null')
+  const [createDeckModal, setCreateModal] = useState(false)
+
+  const [createDeck] = useCreateDeckMutation()
   const { data, isLoading } = useGetDecksQuery({
     currentPage,
     itemsPerPage: Number(view),
+    maxCardsCount: values[1],
+    minCardsCount: values[0],
     name: search,
-    // orderBy: 'author.name-',
+    orderBy: sort == 'null' ? 'null' : sort,
   })
-
+  //Delete
   const [deleteDeck] = useDeleteDeckMutation()
+  const [deleteDeckModal, setDeleteModal] = useState(false)
+  // const [deleteDeckModalTitle, setDeleteDeckModalTitle] = useState('')
+  const [deleteDeckModalId, setDeleteDeckModalId] = useState('')
+
+  const { data: deckDeleteData } = useGetDecksByIdQuery({ id: deleteDeckModalId || '' })
+
+  const [editDeckModal, setEditDeckModal] = useState(false)
+  // const [deleteDeckModalTitle, setDeleteDeckModalTitle] = useState('')
+  const [editDeckModalId, setEditDeckModalId] = useState('')
+
+  const { data: editDeck } = useGetDecksByIdQuery({ id: editDeckModalId || '' })
+
+  //
+
+  const [changeDeck] = useChangeDecksByIDMutation()
 
   if (isLoading) {
     return <h1>loading</h1>
@@ -63,13 +72,18 @@ export const Decks = () => {
     paginationOptions.push(i + 1)
   }
   const deleteHandler = (id: string) => {
-    deleteDeck({ id })
+    setDeleteDeckModalId(id)
+    setDeleteModal(true)
+    // setDeleteDeckModalTitle(deckDeleteData?.name || '')
+  }
+  const deleteSubmit = () => {
+    deleteDeck({ id: deleteDeckModalId })
+    setDeleteDeckModalId('')
+    // setDeleteDeckModalTitle('')
+    setDeleteModal(false)
   }
   const playHandler = (id: string) => {
     console.log('playHandler: ' + id)
-  }
-  const editHandler = (id: string) => {
-    console.log('editHandler: ' + id)
   }
 
   const setPage = (page: number) => {
@@ -78,32 +92,87 @@ export const Decks = () => {
   const setForm = (value: number) => {
     setView(value)
   }
+  const setSortHandler = (value: string) => {
+    setSort(value)
+  }
+  const createDecks = (data: any) => {
+    createDeck(data)
+  }
+  const changeDeckHandler = (id: any) => {
+    setEditDeckModalId(id)
+    setEditDeckModal(true)
+  }
+  const submitChangeDeck = (data: any) => {
+    changeDeck({ data, id: editDeckModalId })
+    setEditDeckModal(true)
+  }
 
   return (
-    <div style={{ margin: 'auto', width: '1006px' }}>
-      <CreateDecks />
-      <div>
+    <div style={{ margin: '0 auto', width: '1010px' }}>
+      <DeleteDecks
+        cancelName={'Cancel'}
+        onOpenChange={setDeleteModal}
+        onSubmit={deleteSubmit}
+        open={deleteDeckModal}
+        submitName={'Delete Card'}
+        title={'Delete Card'}
+        titleDeck={deckDeleteData?.name || ''}
+      />
+      {/*<EditDeck onSubmitForm={} title={'Edit Deck'} />*/}
+      <div className={s.header}>
         <Typography variant={TypographyVariant.h1}>Decks list</Typography>
-        <Button>Add New Deck</Button>
+        <Button onClick={() => setCreateModal(true)}>Add New Deck</Button>
+        <CreateDecks
+          name={'er'}
+          onOpenChange={setCreateModal}
+          onSubmitForm={createDecks}
+          open={createDeckModal}
+          title={'Add New Deck'}
+        />
+
+        <CreateDecks
+          isPrivate={editDeck?.isPrivate}
+          name={editDeck?.name}
+          onOpenChange={setEditDeckModal}
+          onSubmitForm={submitChangeDeck}
+          open={editDeckModal}
+          title={'Change Deck'}
+        />
       </div>
-      <div className={''}>
-        <Input onValueChange={setSearch} />
-        tabs
-        <Tabs asChild>
-          <TabsList>
-            <TabsTrigger value={'my'}>My decks</TabsTrigger>
-            <TabsTrigger value={'all'}>All decks</TabsTrigger>
-          </TabsList>
-        </Tabs>
-        <Slider />
+      <div className={s.filter}>
+        <Input onValueChange={setSearch} placeholder={'Input search'} search />
+        <div className={s.tabsWrapp}>
+          <Typography as={'p'} variant={TypographyVariant.body2}>
+            Show decks cards
+          </Typography>
+          <Tabs asChild value={'all'}>
+            <TabsList defaultValue={'my'}>
+              <TabsTrigger value={'my'}>My decks</TabsTrigger>
+              <TabsTrigger value={'all'}>All decks</TabsTrigger>
+            </TabsList>
+          </Tabs>
+        </div>
+        <div className={s.sliderWrapp}>
+          <Typography as={'p'} variant={TypographyVariant.body2}>
+            Number of cards
+          </Typography>
+          <Slider
+            className={s.slider}
+            max={100}
+            min={1}
+            onValueChange={setValues}
+            step={1}
+            value={values}
+          />
+        </div>
         <Button variant={'secondary'}>Clear Filter</Button>
       </div>
-      <DeskList
+      <DesksList
         card={mapData}
-        columns={columns}
         deleteHandler={deleteHandler}
-        editHandler={editHandler}
+        editHandler={changeDeckHandler}
         playHandler={playHandler}
+        setSortHandler={setSortHandler}
       />
 
       <PaginationContainer

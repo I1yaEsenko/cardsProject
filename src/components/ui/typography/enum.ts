@@ -6,6 +6,7 @@ export enum TypographyVariant {
   h2 = 'h2',
   h3 = 'h3',
   h4 = 'h4',
+  link = 'link',
   link1 = 'link1',
   link2 = 'link2',
   overline = 'overline',

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { Modal } from '@/components/ui/dialog/modal'
+import { Modal } from '@/components/ui/modal/modal'
 import { Meta, StoryObj } from '@storybook/react'
 const meta = {
   component: Modal,

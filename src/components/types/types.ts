@@ -24,7 +24,25 @@ export type FriendsCards = {
 }
 export type GetDecksResponse = components['schemas']['PaginatedDecks']
 export type GetDecksArgs = operations['DecksController_findAllV2']['parameters']['query']
+export type GetCards = components['schemas']['PaginatedCardsWithGrade']
+export type GetOrderBysArgs =
+  | 'author.name-asc'
+  | 'author.name-desc'
+  | 'cardsCount-asc'
+  | 'cardsCount-desc'
+  | 'created-asc'
+  | 'created-desc'
+  | 'name-asc'
+  | 'name-desc'
+  | 'null'
+  | 'updated-asc'
+  | 'updated-desc'
+export type CardWithGrade = components['schemas']['CardWithGrade']
+export type DeckResponse = components['schemas']['DeckWithAuthor']
 export type CreateDeckArgs = components['schemas']['CreateDeckRequest']
 export type SDeleteDeckArgs = operations['DecksController_remove']['parameters']['path']
-
+export type SaveGrade = {
+  cardId: string
+  grade: number
+}
 export type OptionType = { title: string; value: string }

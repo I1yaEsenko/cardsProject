@@ -1,0 +1,43 @@
+.card {
+  width: 420px;
+  margin: 0 auto;
+
+  .title {
+    text-align: center;
+  }
+
+  .question {
+    display: flex;
+    gap: 10px;
+    margin: 45px 0 41px;
+  }
+
+  .answer {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+
+    .answerTitle {
+      display: flex;
+      gap: 10px;
+    }
+  }
+
+  .answerDisabled {
+    display: none;
+  }
+
+  .answerButton {
+    margin-top: 21px;
+  }
+
+  .button {
+    display: none;
+  }
+
+  .rate {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+}

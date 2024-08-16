@@ -19,7 +19,7 @@ export const Radio = forwardRef<ElementRef<typeof RadioGroup.Root>, RadioGroupPr
     }
 
     return (
-      <RadioGroup.Root className={classes.root} {...rest} ref={ref}>
+      <RadioGroup.Root className={classes.root} ref={ref} {...rest}>
         {options?.map(option => <RadioItem key={option.value} {...option} />)}
       </RadioGroup.Root>
     )

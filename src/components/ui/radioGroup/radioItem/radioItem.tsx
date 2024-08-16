@@ -11,11 +11,11 @@ export type Option = {
   value: string
 }
 //разобраться с рефОм !!!
-export const RadioItem = forwardRef<ElementRef<typeof RadioGroup.Root>, Option>(
-  ({ label, value }) => {
+export const RadioItem = forwardRef<ElementRef<typeof RadioGroup.Item>, Option>(
+  ({ label, value }, ref) => {
     return (
       <div className={s.container}>
-        <RadioGroup.Item className={s.radio} disabled={false} id={value} value={value}>
+        <RadioGroup.Item className={s.radio} disabled={false} id={value} ref={ref} value={value}>
           <RadioGroup.Indicator className={s.indicator} />
         </RadioGroup.Item>
         <Typography

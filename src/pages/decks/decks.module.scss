@@ -1,0 +1,37 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 7px;
+}
+
+.filter {
+  display: flex;
+
+  //grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+  align-items: flex-end;
+  margin: 10px 0 16px;
+
+  .slider {
+    min-width: 150px;
+  }
+
+  .input {
+  }
+
+  .tabs {
+  }
+}
+
+.tabsWrapp {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
+
+.sliderWrapp {
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+}
